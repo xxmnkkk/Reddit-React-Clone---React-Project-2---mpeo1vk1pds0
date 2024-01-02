@@ -1,0 +1,73 @@
+@import "../../../styles/variables.scss";
+
+.chat-modal-container {
+    position: fixed;
+    bottom: 0;
+    right: 30px;
+    width: 631px;
+    height: 505px;
+    background-color: black;
+    border-radius: 15px 15px 0 0;
+    box-shadow: 0 0 10px 1px white;
+    z-index: 1000;
+}
+
+.chat-modal-bar {
+    background-color: inherit;
+    padding: 10px;
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    >span {
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        margin: 30px;
+    }
+}
+
+.chat-icon-div {
+    width: 28px;
+    height: 28px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.chat-icon{
+    height: 20px;
+    width: 20px;
+}
+
+.chat-icon-div:hover{
+    background-color: $searchBarHoverColor;
+
+    >.chat-icon{
+        background-color: $searchBarHoverColor;
+    }
+}
+
+.chat-modal-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: inherit;
+    gap: 20px;
+
+    >img{
+        height: 180px;
+        width: 180px;
+    }
+
+    >h3 , p{
+        color: white;
+        background-color: inherit;
+    }
+}

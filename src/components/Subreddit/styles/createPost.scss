@@ -1,0 +1,131 @@
+@import "../../../styles/variables.scss";
+
+.create-post-main-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.createpost-information-taker-container {
+    width: 40%;
+    height: 690px;
+    border: 1px solid $breakLineColor;
+    border-radius: 15px;
+    background-color: $loginAndSignupModalBackgroundColor;
+}
+
+.textarea-post {
+    height: 400px;
+}
+
+.post-container {
+    display: flex;
+    justify-content: flex-end;
+    background-color: inherit;
+}
+
+.post-button {
+    padding: 4px;
+    background-color: white;
+    border-radius: 15px;
+    color: black;
+    font-weight: bold;
+    width: 60px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.create-post-notification-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 30px;
+    border-radius: 0 0 15px 15px;
+    background-color: $createCommunityModalBackDrop2;
+
+    >div {
+        background-color: inherit;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    >p {
+        background-color: inherit;
+        color: lightblue;
+    }
+}
+
+.createpost-rules {
+    width: 20%;
+    height: 350px;
+    border: 1px solid $breakLineColor;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: $loginAndSignupModalBackgroundColor;
+
+    >div {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background-color: inherit;
+        color: white;
+        font-size: 22px;
+        font-weight: bold;
+
+        >img {
+            height: 50px;
+            width: 50px;
+            border-radius: 15px;
+        }
+    }
+
+    >hr {
+        border: none;
+        height: 1px;
+        margin: 5px 10px;
+        background-color: $breakLineColor;
+    }
+
+    >p {
+        color: white;
+        background-color: inherit;
+        margin-left: 20px;
+    }
+}
+
+.success-message-div {
+    width: 250px;
+    height: 60px;
+    border-radius: 15px;
+    background-color: green;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: slideUp 0.5s ease-out forwards;
+
+    >.robot-icon {
+        background-color: inherit;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateX(-50%) translateY(100%);
+    }
+
+    to {
+        transform: translateX(-50%) translateY(-130px);
+    }
+}

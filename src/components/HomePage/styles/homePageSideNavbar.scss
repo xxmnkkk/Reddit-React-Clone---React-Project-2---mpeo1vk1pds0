@@ -1,0 +1,119 @@
+@import "../../../styles/variables.scss";
+
+.homepage-main-container{
+    width: 99.8%;
+    // height: 800px;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 0;
+}
+
+.homepage-side-navbar-container{
+    width: 15%;
+    height: 900px;
+    overflow: auto;
+    border-right: 1px solid $breakLineColor;
+    padding-right: 10px;
+    position: sticky;
+    top: 2%;
+}
+
+.homepage-posts-container{
+    position: relative;
+    // border-left: 1px solid $breakLineColor;
+    width: 40%;
+    height: 100%;
+}
+
+// .homepage-popular-communities-container{
+//     position: relative;
+//     // border: 1px solid red;
+//     width: 15%;
+//     background-color: rgb(4,9,10);
+//     border-radius: 10px;
+// }
+
+.homepage-feed-selector-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.homepage-feed-selector{
+    height: 30px;
+    color: white;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.homepage-feed-selector-active{
+    background-color: $searchBarHoverColor;
+
+    >.homepage-feed-icon{
+        background-color: $searchBarHoverColor;
+
+    }
+}
+
+.homepage-sidenav-line-breaker{
+    border: none;
+    background-color: $breakLineColor;
+    height: 1px;
+    margin: 10px 0;
+}
+
+.homepage-excess-container{
+    padding: 10px 0;
+}
+
+.homepage-excess-title{
+    padding: 10px 10px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    border-radius: 10px;
+
+    >span{
+        color: $feedTitleColor;
+        font-size: 14px;
+    }
+}
+
+.homepage-excess-title:hover{
+    background-color: $searchBarHoverColor;
+
+    >span{
+        background-color: $searchBarHoverColor;
+    }
+
+    .homepage-excess-dropdown{
+        background-color: $searchBarHoverColor;
+    }
+}
+
+.homepage-excess-dropdown-active{
+    transform: rotate(180deg);
+}
+
+.homepage-excess-text{
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: not-allowed;
+}
+
+.homepage-side-navbar-rights{
+    color: rgb(172,172,172);
+    padding: 10px;
+    font-size: 14px;
+}

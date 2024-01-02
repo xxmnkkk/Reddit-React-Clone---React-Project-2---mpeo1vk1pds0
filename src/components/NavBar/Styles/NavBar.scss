@@ -1,0 +1,488 @@
+@import "../../../styles/variables.scss";
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400&family=Poppins:wght@700&family=Roboto:wght@500&display=swap');
+
+.navbar-container {
+  background-color: $primaryColor;
+  height: 56.55px;
+  width: 96%;
+  border-bottom: 1px solid $breakLineColor;
+  margin: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  >.navbar-logo-container {
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: Roboto;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    align-items: center;
+    margin-left: 14px;
+
+    >img {
+      max-width: 34px;
+      max-height: 34px;
+    }
+  }
+
+  >.navbar-search-container {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+
+    .navbar-search {
+      position: relative;
+      height: 40%;
+      width: 101%;
+      border-radius: 20px;
+      background-color: $searchBarColor;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 10px;
+      gap: 20px;
+      z-index: 2;
+
+      >.navbar-search-icon {
+        color: white;
+        background-color: $searchBarColor;
+        height: 22px;
+        width: 22px;
+      }
+
+      >input {
+        border: none;
+        position: relative;
+        width: 90%;
+        height: 100%;
+        background-color: $searchBarColor;
+        color: white;
+      }
+
+      >input:focus {
+        border: none;
+        outline: none;
+        caret-color: white;
+      }
+    }
+
+    >.navbar-search:hover {
+      background-color: $searchBarHoverColor;
+  
+      >.navbar-search-icon {
+        background-color: $searchBarHoverColor;
+      }
+  
+      >input {
+        background-color: $searchBarHoverColor;
+      }
+    }
+
+    >.navbar-search-modal{
+      position: absolute;
+      width: inherit;
+      height: 20px;
+      background-color: $searchBarColor;
+      z-index: 1;
+      border-radius: 20px;
+      padding-top: 50px;
+      box-shadow: 0 0 5px 3px black;
+      overflow: auto;
+      height: 370px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding-bottom: 20px;
+      // height: fit-content;
+
+      // >hr{
+      //   position: sticky;
+      //   top: 0;
+      //   background-color: $breakLineColor;
+      //   border: none;
+      //   height: 1px;
+      // }
+    }
+
+    >.navbar-search-modal::-webkit-scrollbar{
+      list-style: none;
+      width: 0;
+    }
+  }
+
+  >.navbar-signin-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    >.navbar-banana-logo-container {
+      padding: 10px;
+      border-radius: 25px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      >.navbar-banana-logo {
+        color: rgb(255, 214, 56);
+        height: 20px;
+        width: 20px;
+      }
+    }
+
+    >.navbar-banana-logo-container:hover {
+      background-color: $searchBarHoverColor;
+
+      >.navbar-banana-logo {
+        background-color: $searchBarHoverColor;
+      }
+    }
+
+    >p {
+      height: 35px;
+      border: 0.5px solid $breakLineColor;
+    }
+
+    >.navbar-getapp-container {
+      padding: 10px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      background-color: $searchBarColor;
+      border-radius: 20px;
+      cursor: pointer;
+
+      >.navbar-qr-code {
+        color: white;
+      }
+
+      >span {
+        color: white;
+        background-color: $searchBarColor;
+        font-size: 14px;
+        font-weight: bold;
+      }
+    }
+
+    >.navbar-getapp-container:hover {
+      background-color: $searchBarHoverColor;
+
+      >span {
+        background-color: $searchBarHoverColor;
+      }
+    }
+
+    >.navbar-signin-button {
+      background-color: $navbarLoginColor;
+      padding: 12px;
+      border-radius: 20px;
+      height: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    >.navbar-signin-button:hover {
+      background-color: $navbarLoginHoverColor;
+    }
+
+    >.navbar-horizontal-kabab {
+      padding: 10px;
+      border-radius: 25px;
+      cursor: pointer;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      >.navbar-kabab {
+        rotate: 90deg;
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    >.navbar-horizontal-kabab:hover {
+      background-color: $searchBarHoverColor;
+
+      >.navbar-kabab {
+        background-color: $searchBarHoverColor;
+      }
+    }
+  }
+}
+
+.navbar-auth-logo-container {
+  position: relative;
+  padding: 10px;
+  border-radius: 25px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  >.navbar-auth-logo {
+    color: white;
+    height: 20px;
+    width: 20px;
+  }
+}
+
+.navbar-auth-logo-container:hover {
+  background-color: $searchBarHoverColor;
+
+  >.navbar-auth-logo {
+    background-color: $searchBarHoverColor;
+  }
+}
+
+.navbar-auth-hornlogo-container {
+  padding: 10px;
+  border-radius: 25px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $searchBarColor;
+
+  >.navbar-auth-hornlogo {
+    color: white;
+    height: 20px;
+    width: 20px;
+    background-color: inherit;
+  }
+}
+
+.navbar-auth-hornlogo-container:hover {
+  background-color: $searchBarHoverColor;
+
+  >.navbar-auth-hornlogo {
+    background-color: $searchBarHoverColor;
+  }
+}
+
+.loggedin-user-info {
+  display: flex;
+  gap: 10px;
+  color: white;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+
+  >.profile-image-div img {
+    max-height: 24px;
+    max-width: 24px;
+  }
+
+  >div {
+    display: flex;
+    flex-direction: column;
+
+    >p {
+      font-size: 14px;
+    }
+
+    >div {
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      color: $feedTitleColor;
+
+      >.karma-flower-icon {
+        color: red;
+      }
+    }
+  }
+}
+
+.loggedin-user-info:hover {
+  background-color: $searchBarHoverColor;
+
+  >.profile-image-div .user-active-green-dot{
+    background-color: green;
+  }
+
+  >div {
+    background-color: $searchBarHoverColor;
+
+    >p,
+    div {
+      background-color: $searchBarHoverColor;
+    }
+
+    >div .karma-flower-icon {
+      background-color: $searchBarHoverColor;
+    }
+  }
+
+  .loggedin-user-dowpdown {
+    background-color: $searchBarHoverColor;
+  }
+}
+
+.user-active-green-dot{
+  position: absolute;
+  height: 8px;
+  width: 8px;
+  border-radius: 10px;
+  background-color: green;
+}
+
+.loggedin-profile-modal-active {
+  .loggedin-user-info {
+    background-color: $searchBarHoverColor;
+
+    >.profile-image-div .user-active-green-dot{
+      background-color: green;
+    }
+
+    >div {
+      background-color: $searchBarHoverColor;
+
+      >p,
+      div {
+        background-color: $searchBarHoverColor;
+      }
+
+      >div .karma-flower-icon {
+        background-color: $searchBarHoverColor;
+      }
+    }
+
+    .loggedin-user-dowpdown {
+      background-color: $searchBarHoverColor;
+    }
+  }
+}
+
+.loggedin-user-profile-container {
+  position: relative;
+}
+
+.profile-modal {
+  position: absolute;
+  top: 54px;
+  right: 0;
+  height: 800px;
+  width: 232px;
+  border: 0.5px solid $breakLineColor;
+  border-radius: 10px;
+  z-index: 1;
+  background-color: $loginAndSignupModalBackgroundColor;
+  overflow: auto;
+
+  .profile-modal-mystuff-container {
+    display: flex;
+    flex-direction: column;
+    // gap: 20px;
+    // padding: 30px;
+    background-color: inherit;
+
+    .profile-modal-mystuff-suncont-head {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      color: $feedTitleColor;
+      padding: 30px 30px 20px 30px;
+      background-color: inherit;
+
+      >.profile-modal-user-icon {
+        background-color: inherit;
+      }
+    }
+
+    .profile-modal-mystuff-suncont {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      color: white;
+      height: 45px;
+      // border-radius: 10px;
+      cursor: pointer;
+      padding-left: 30px;
+      background-color: inherit;
+      z-index: 1;
+
+      >span {
+        background-color: inherit;
+      }
+
+      .profile-banana-logo {
+        height: 18px;
+        width: 18px;
+        color: rgb(255, 214, 56);
+        background-color: inherit;
+      }
+
+      .profile-blank-span {
+        width: 18px;
+      }
+
+      >p {
+        background: rgb(236, 11, 34);
+        background: linear-gradient(90deg, rgba(236, 11, 34, 1) 0%, rgba(255, 133, 23, 1) 100%);
+        padding: 5px;
+        border-radius: 15px;
+        font-size: 10px;
+        font-weight: bold;
+        margin-left: 8px;
+      }
+    }
+  }
+}
+
+.profile-modal {
+  .profile-modal-mystuff-suncont:hover {
+    background-color: $searchBarHoverColor;
+
+    .profile-banana-logo {
+      background-color: $searchBarHoverColor;
+    }
+
+    .profile-excess-logo {
+      background-color: $searchBarHoverColor;
+    }
+
+    >span {
+      background-color: $searchBarHoverColor;
+    }
+  }
+}
+
+.profile-modal-switch {
+  background-color: $loginAndSignupModalBackgroundColor;
+}
+
+.profile-modal-line-break {
+  color: $breakLineColor;
+  border: 0;
+  height: 1px;
+  margin: 15px 0 0 0;
+  background-color: $breakLineColor;
+}
+
+.profile-modal-excess-texts {
+  font-size: 14px;
+}
+
+.reddit-profile-rights-text {
+  padding: 25px;
+  background-color: $loginAndSignupModalBackgroundColor;
+  font-size: 14px;
+  color: rgb(130, 131, 132);
+}
+
+.profile-excess-logo {
+  height: 18px;
+  width: 18px;
+  color: white;
+  background-color: $loginAndSignupModalBackgroundColor;
+}

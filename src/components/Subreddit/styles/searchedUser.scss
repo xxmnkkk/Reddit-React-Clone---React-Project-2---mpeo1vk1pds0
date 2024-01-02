@@ -1,0 +1,128 @@
+@import "../../../styles/variables.scss";
+
+.reddit-user-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 40px;
+}
+
+.reddit-user-post-container {
+    width: 40%;
+}
+
+
+
+
+
+.reddit-user-info-container {
+    width: 290px;
+    height: 360px;
+    background-color: $loginAndSignupModalBackgroundColor;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.blue-bar {
+    width: 100%;
+    height: 100px;
+    border-radius: 10px 10px 0 0;
+    background-color: rgb(46, 151, 229);
+    position: relative;
+    // margin-bottom: 20px;
+}
+
+.reddit-user-image-div {
+    height: 90px;
+    width: 90px;
+    border-radius: 10px;
+    position: absolute;
+    background-color: red;
+    top: 20px;
+    left: 16px;
+    overflow: hidden;
+
+    >img {
+        height: 90px;
+        width: 90px;
+    }
+}
+
+.reddit-user-name {
+    color: white;
+    background-color: inherit;
+    margin-left: 0px;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 20px;
+}
+
+hr {
+    background-color: $breakLineColor;
+    border: none;
+    height: 1px;
+    margin: 20px 0;
+}
+
+.reddit-post-container {
+    border-radius: 15px;
+
+    >.post-image-and-details-container {
+        border-radius: inherit;
+    }
+}
+
+.follow {
+    padding: 10px;
+    color: black;
+    background-color: white;
+    border-radius: 15px;
+    width: 100px;
+    margin: 10px 0;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 50%;
+    transform: translate(-50%);
+}
+
+.reddit-user-karma-container{
+    display: flex;
+    padding: 10px 30px;
+    background-color: inherit;
+    justify-content: space-between;
+}
+
+.karma-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: inherit;
+
+    >p{
+        color: white;
+        background-color: inherit;
+    }
+
+    >div{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        background-color: inherit;
+
+        >.reddit-user-icon{
+            color: blue;
+            background-color: inherit;
+        }
+
+        >span{
+            color: $feedTitleColor;
+            font-size: 14px;
+            background-color: inherit;
+        }
+    }
+}

@@ -1,0 +1,123 @@
+@import "../../../styles/variables.scss";
+
+.comment-container {
+    position: relative;
+    // width: 100%;
+    height: fit-content;
+    background-color: $postHoverBackgroundColor;
+}
+
+.comment-username {
+    color: white;
+    background-color: inherit;
+    padding: 10px 20px;
+
+    >span {
+        color: $commentAuthorColor;
+        background-color: inherit;
+    }
+}
+
+.post-comment-container {
+    margin: 10px 40px;
+    background-color: inherit;
+    border-radius: 5px;
+    box-shadow: 0 0 2px 1px white;
+    padding-bottom: 10px;
+
+    >textarea {
+        margin: 10px 0;
+        width: 95%;
+        height: 100px;
+        margin-left: 50%;
+        transform: translate(-50%);
+        color: white;
+    }
+}
+
+.postcomment-icon-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: inherit;
+    border-radius: inherit;
+    padding: 0 10px;
+}
+
+.post-icon-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: inherit;
+}
+
+.postcomment-icon {
+    color: white;
+    font-size: 22px;
+    background-color: inherit;
+}
+
+.postcomment-text {
+    display: flex;
+    gap: 10px;
+    color: white;
+    align-items: center;
+    font-size: 18px;
+    background-color: inherit;
+
+    >p {
+        background-color: inherit;
+    }
+}
+
+.postcomment-button {
+    padding: 3px 7px;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.otheruser-comment-container {
+    padding: 20px 40px;
+    background-color: inherit;
+}
+
+.reddit-comment-author-name {
+    background-color: inherit;
+    color: $commentAuthorColor;
+}
+
+.reddit-comment-1 {
+    background-color: inherit;
+    color: white;
+    margin-left: 10px;
+    padding-left: 10px;
+    border-left: 1px solid rgb(52,53,54);
+
+    >p {
+        background-color: inherit;
+        color: white;
+    }
+}
+
+.reddit-comment-children{
+    background-color: inherit;
+}
+
+textarea:focus{
+    // border: none;
+    outline: none;
+    caret-color: white;
+}
+.comment-delete{
+    background-color: inherit;
+    padding: 2px 5px;
+    color: gray;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.comment-delete:hover{
+    color: red;
+}

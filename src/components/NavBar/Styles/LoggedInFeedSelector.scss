@@ -1,0 +1,150 @@
+@import "../../../styles/variables.scss";
+
+.loggedin-feed-selector-container{
+    position: relative;
+    width: 16.62%;
+}
+
+.auth-navbar-container{
+    position: relative;
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.auth-navbar-container:hover{
+    border: 1px solid $breakLineColor;
+}
+
+.auth-navbar-container{
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+
+
+    >div{
+        color: rgb(255,255,255);
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+}
+
+.dropdown{
+    height: 20px;
+    width: 20px;
+}
+
+.feed-icon{
+    height: 25px;
+    width: 25px;
+}
+
+.feed-modal-active{
+    background-color: $loginAndSignupModalBackgroundColor;
+    border-radius: 5px 5px 0 0 ;
+
+    >div{
+        background-color: $loginAndSignupModalBackgroundColor;
+
+        > span{
+            background-color: $loginAndSignupModalBackgroundColor;
+        }
+    }
+}
+
+.feed-modal-active-2{
+    background-color: $loginAndSignupModalBackgroundColor;
+}
+
+.feed-selector-modal-container{
+    position: absolute;
+    top: 35px;
+    height: 482px;
+    width: 100%;
+    padding: 30px 10px 10px 10px;
+    background-color: $loginAndSignupModalBackgroundColor;
+    z-index: 1;
+    border-radius: 0 0 5px 5px;
+    overflow: auto;
+
+    >span{
+        color: $feedTitleColor;
+        margin: 30px 30px 30px 20px;
+        background-color: inherit;
+    }
+}
+
+.feed-selector-container{
+    padding: 10px 30px;
+    background-color: inherit;
+    color: white;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.feed-container-one{
+    margin-bottom: 20px;
+}
+
+.feed-selector-container:hover{
+    background-color: $searchBarColor;
+}
+
+.feed-selector-other-container{
+    background-color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    >div{
+        color: white;
+        background-color: inherit;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        >.other-icon{
+            width: 22px;
+            height: 22px;
+            background-color: inherit;
+        }
+    }
+}
+
+.feed-selector-other-container{
+
+    >div:hover{
+        background-color: $searchBarColor;
+    }
+}
+
+.all{
+    cursor: not-allowed;
+}
+
+.feed-selector-container-usersetting{
+    cursor: not-allowed;
+}
+
+.feed-create-community{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background-color: inherit;
+    color: white;
+    padding: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.feed-create-community:hover{
+    background-color: $searchBarColor;
+}

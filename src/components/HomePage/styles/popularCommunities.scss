@@ -1,0 +1,96 @@
+@import "../../../styles/variables.scss";
+
+.popular-community-section{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 15%;
+    height: 850px;
+    position: sticky;
+    top: 2%;
+    overflow: scroll;
+}
+
+.popular-community-container{
+    color: $feedTitleColor;
+    font-weight: bold;
+    font-size: 12px;
+    background-color: rgb(4,9,10);
+    border-radius: 10px;
+    height: 300px;
+    padding: 10px;
+    overflow: hidden;
+
+    >h3{
+        background-color: inherit;
+    }
+}
+
+.popular-community-container-expanded{
+    height: fit-content;
+    overflow: auto;
+}
+
+.popular-community-data-container{
+    padding: 10px;
+    background-color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.popular-community-data{
+    display: flex;
+    gap: 12px;
+    background-color: inherit;
+    padding: 10px;
+    cursor: pointer;
+    align-items: center;
+
+    >img{
+        height: 32px;
+        width: 32px;
+        border-radius: 25px;
+        background-color: inherit;
+    }
+
+    >div{
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        background-color: rgb(4,9,10);
+
+        >p{
+            font-size: 12px;
+            background-color: rgb(4,9,10);
+        }
+
+        >span{
+            font-size: 10px;
+            background-color: rgb(4,9,10);
+        }
+    }
+}
+
+.popular-community-data:hover{
+    background-color: $searchBarHoverColor;
+
+    >div{
+        background-color: $searchBarHoverColor;
+
+        > p , span{
+            background-color: $searchBarHoverColor;
+        }
+    }
+}
+
+.popular-community-extendor-button{
+    color: white;
+    padding: 0 20px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.popular-community-section-popularactive{
+    margin-top: 220px;
+}

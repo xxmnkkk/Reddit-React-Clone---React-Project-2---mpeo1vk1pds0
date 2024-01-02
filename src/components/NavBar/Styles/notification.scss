@@ -1,0 +1,92 @@
+@import "../../../styles/variables.scss";
+
+.notification-modal {
+    position: absolute;
+    top: 50px;
+    background-color: $loginAndSignupModalBackgroundColor;
+    width: 375px;
+    height: 333px;
+    z-index: 1000;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    cursor: auto;
+}
+
+.notification-reddit-recap-container {
+    height: 100px;
+    width: 343px;
+    background: rgb(236, 11, 34);
+    background: linear-gradient(90deg, rgba(236, 11, 34, 1) 0%, rgba(255, 133, 23, 1) 100%);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.reddit-title-bar{
+    background: inherit;
+    border-radius: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+    >span{
+        background-color: inherit;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+    }
+}
+
+.notification-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: inherit;
+
+    >img{
+        height: 128px;
+        background-color: inherit;
+    }
+
+    >h3 {
+        color: white;
+        background-color: inherit;
+    }
+
+    >p {
+        color: white;
+        background-color: inherit;
+        font-size: 14px;
+        text-align: center;
+    }
+}
+
+.notification-reddit-text{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: inherit;
+    padding: 10px;
+    border-radius: inherit;
+}
+
+.notification-reddit-text-subcont{
+    background-color: inherit;
+
+    >p{
+        background-color: inherit;
+        color: white;
+    }
+}
+
+.noti-banana-icon{
+    height: 50px;
+    width: 50px;
+    background-color: inherit;
+    color: $bananaColor;
+}

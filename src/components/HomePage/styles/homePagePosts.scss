@@ -1,0 +1,311 @@
+@import "../../../styles/variables.scss";
+
+.homepage-posts-section {
+    width: 100%;
+    height: fit-content;
+    margin: 0px 10px;
+
+    >hr {
+        border: none;
+        height: 1px;
+        background-color: $breakLineColor;
+        margin-top: 10px;
+    }
+}
+
+.homepage-post-container {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    border-radius: 10px;
+    margin: 12px 0 0 0;
+
+    >.post-author-info-container {
+        border-radius: 10px;
+        margin: 12px;
+    }
+}
+
+.homepage-post-container:hover {
+    background-color: $postHoverBackgroundColor;
+
+    >.post-author-info-container {
+        background-color: inherit;
+
+        >.post-author-info {
+            background-color: inherit;
+
+            >span {
+                background-color: inherit;
+            }
+        }
+
+        >.post-join-section {
+            background-color: inherit;
+
+            >.post-menu-container {
+                background-color: inherit;
+
+                >.post-menu-icon-section {
+                    background-color: inherit;
+
+                    >.post-menu-icon {
+                        background-color: inherit;
+                    }
+                }
+            }
+        }
+    }
+
+    >.post-image-and-details-container {
+        background-color: inherit;
+
+        >p {
+            background-color: inherit;
+        }
+    }
+
+    >.post-interaction-container{
+        background-color: inherit;
+    }
+}
+
+.post-menu-icon-section:hover {
+    background-color: $postAuthorColor;
+
+    >.post-menu-icon {
+        background-color: $postAuthorColor;
+    }
+}
+
+.post-author-info-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.post-author-info {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    >img {
+        max-width: 28px;
+        max-height: 28px;
+        border-radius: 25px;
+    }
+
+    >span {
+        color: $postAuthorColor;
+        font-size: 10px;
+    }
+}
+
+.post-join-section {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    >span {
+        width: 48.62px;
+        height: 24px;
+        background-color: $joinButtonColor;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 10px;
+        cursor: pointer;
+    }
+}
+
+.post-join-section span:hover {
+    background-color: $joinButtonHoverColor;
+}
+
+.post-menu-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-menu-icon-section {
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+}
+
+.post-menu-icon {
+    color: white;
+    transform: rotate(90deg);
+}
+
+.post-menu-icon-section:hover {
+    background-color: $searchBarColor;
+
+    .post-menu-icon {
+        background-color: $searchBarColor;
+    }
+}
+
+.menu-report {
+    width: 80px;
+    height: 30px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background-color: $loginAndSignupModalBackgroundColor;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.post-image-and-details-container {
+    padding: 0px 20px 20px 20px;
+    color: $postAuthorColor;
+}
+
+.post-interaction-container{
+    display: flex;
+    gap: 20px;
+    margin: 0 0 5px 20px;
+}
+
+.post-interaction-subcont{
+    padding: 4px 10px;
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+    background-color: rgb(26,40,45);
+    border-radius: 10px;
+
+    >.post-interaction-icon{
+        background-color: inherit;
+    }
+
+    >.post-interaction-icon-1{
+        background-color: inherit;
+    }
+}
+
+.post-curse{
+    cursor: pointer;
+}
+
+.post-interaction-icon:hover{
+    background-color: rgb(33,50,55);
+    color: rgb(105,92,255);
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.post-curse:hover{
+    background-color: $searchBarHoverColor;
+}
+
+.homepage-post-popular-slider{
+    // border: 1px solid red;
+    margin: 10px 0;
+    height: 200px;
+    width: 139%;
+    display: flex;
+    justify-content: space-between;
+    // gap: 20px;
+    align-items: center;
+}
+
+.post-slider-card-container{
+    width: 290px;
+    height: 193px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+
+    >img{
+        width: inherit;
+        // height: inherit;
+    }
+
+    >p{
+        position: absolute;
+        color: white;
+        top: 70%;
+        background-color: transparent;
+        padding: 0 20px;
+        font-size: 14px;
+        font-weight: 500;
+        overflow: hidden;
+    }
+
+    >span{
+        color: white;
+        position: absolute;
+        top: 90%;
+        left: 20px;
+        background-color: transparent;
+        font-size: 12px;
+        font-weight: 500;
+
+        >span{
+            color: $feedTitleColor;
+            background-color: inherit;
+        }
+    }
+}
+
+.homepage-post-container-active{
+    background-color: $postHoverBackgroundColor;
+    border-radius: 15px 15px 0 0;
+
+    >.post-author-info-container {
+        background-color: inherit;
+
+        >.post-author-info {
+            background-color: inherit;
+
+            >span {
+                background-color: inherit;
+            }
+        }
+
+        >.post-join-section {
+            background-color: inherit;
+
+            >.post-menu-container {
+                background-color: inherit;
+
+                >.post-menu-icon-section {
+                    background-color: inherit;
+
+                    >.post-menu-icon {
+                        background-color: inherit;
+                    }
+                }
+            }
+        }
+    }
+
+    >.post-image-and-details-container {
+        background-color: inherit;
+
+        >p {
+            background-color: inherit;
+        }
+    }
+
+    >.post-interaction-container{
+        background-color: inherit;
+    }
+}

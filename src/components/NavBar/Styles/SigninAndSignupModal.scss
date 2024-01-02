@@ -1,0 +1,148 @@
+@import "../../../styles/variables.scss";
+
+.signin-and-signup-modal-layover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(1px);
+    z-index: 1;
+}
+
+.signin-and-signup-modal-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $loginAndSignupModalBackgroundColor;
+    // height: 640px;
+    height: fit-content;
+    width: 528px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 60px;
+
+    .signin-modal-close-logo {
+        display: flex;
+        justify-content: flex-end;
+        padding: 20px;
+        align-items: center;
+        position: relative;
+        background-color: inherit;
+        border-radius: 15px;
+        width: 90%;
+
+        >div {
+            height: 32px;
+            width: 32px;
+            background-color: $signinModalPrimaryColor;
+            border-radius: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            >.signin-modal-close {
+                background-color: inherit;
+                color: white;
+                width: 22px;
+                height: 22px;
+                border-radius: 25px;
+            }
+        }
+
+        >div:hover{
+            background-color: $signinModalSecondaryColor;
+        }
+    }
+
+    >.signin-modal-texts { 
+        padding: 10px 50px;
+        background-color: inherit;
+
+        >h1{
+            background-color: inherit;
+            color: white;;
+        }
+
+        >p{
+            background-color: inherit;
+            color: white;
+            padding: 10px 0 0 0;
+
+            >span {
+                color: rgb(98,159,255);
+            }
+        }
+    }
+
+    >.login-input-section{
+        display: flex;
+        flex-direction: column;
+        padding: 60px;
+        background-color: inherit;
+        gap: 20px;
+
+        >input{
+            background-color: $signinModalPrimaryColor;
+            border: none;
+            height: 56px;
+            width: 368px;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        >input:focus{
+            outline: none;
+            caret-color: white;
+        }
+
+        >input:hover{
+            background-color: $signinModalSecondaryColor;
+        }
+
+        >p{
+            background-color: inherit;
+            color: white;
+            margin-top: 16px;
+
+            >span{
+                background-color: inherit;
+                color: $signinModalLinkColor;
+                cursor: pointer;
+            }
+        }
+    }
+
+    >.login-and-signup-button{
+        width: 368px;
+        height: 56px;
+        border-radius: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $navbarLoginColor;
+        cursor: pointer;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    >.login-and-signup-button:hover{
+        background-color: $navbarLoginHoverColor;
+    }
+}
+
+.login-error{
+    color: red;
+    background-color: inherit;
+    text-align: center;
+    padding-top: 40px;
+}
+
