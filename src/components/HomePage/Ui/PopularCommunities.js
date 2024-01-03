@@ -3,6 +3,8 @@ import "../styles/popularCommunities.scss"
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
 import { setPopularCommunnitiesData, handleShowMoreClick } from '../../../redux/reducers/homePageSlice'
+import {handleLoginButtonClick} from "../../../redux/reducers/loginSlice"
+import {setSubredditUserId} from "../../../redux/reducers/searchedUserSlice"
 import { useNavigate } from 'react-router-dom'
 
 export default function PopularCommunities() {
@@ -27,8 +29,14 @@ export default function PopularCommunities() {
             })
     }, [])
 
-    const handleSubredditNavigate = () => {
-        if(loginState.isLoggedIn)
+    const handleSubredditNavigate = (userId) => {
+        if(!loginState.isLoggedIn){
+            dispatch(handleLoginButtonClick())
+        }
+        else{
+            dispatch(setSubredditUserId(userId))
+            navigate("/subreddit");
+        }
     }
 
     console.log("Popular communities",homepageState.popularCommunitiesData);
@@ -43,7 +51,7 @@ export default function PopularCommunities() {
                         homepageState.popularCommunitiesData.map((data, index) => (
                             <div 
                             className='popular-community-data' key={index}
-                            
+                            onClick={() => handleSubredditNavigate(data._id)}
                             >
                                 <img src={data.image} />
                                 <div>
@@ -65,3 +73,7 @@ export default function PopularCommunities() {
         </div>
     )
 }
+
+
+
+// onClick={handleSubredditNavigate(data._id)}
