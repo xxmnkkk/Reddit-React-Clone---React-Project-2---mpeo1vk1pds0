@@ -1,4 +1,31 @@
 .home-sidenavbar{
     position: sticky;
+    width: 20%;
     top: 8px;
+}
+
+@media screen and (max-width: 768px)  {
+    // .homepage-main-container{
+    //     gap: 5px;
+    // }
+
+    .home-sidenavbar{
+        display: none;
+    }
+
+    .popular-community-section{
+        width: 30%;
+    }
+
+    .homepage-posts-container{
+        width: 65%;
+    }
+
+    // .homepage-post-popular-slider{
+    //     width: 160%;
+    // }
+
+    // .homepage-posts-container-ipad{
+    //     width: 60%;
+    // }
 }

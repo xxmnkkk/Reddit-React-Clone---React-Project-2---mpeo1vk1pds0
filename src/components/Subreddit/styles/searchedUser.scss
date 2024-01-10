@@ -4,7 +4,8 @@
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-top: 40px;
+    padding: 50px 0;
+    min-height: 850px;
 }
 
 .reddit-user-post-container {
@@ -73,6 +74,7 @@ hr {
 
     >.post-image-and-details-container {
         border-radius: inherit;
+        border-radius: 15px;
     }
 }
 
@@ -90,39 +92,191 @@ hr {
     transform: translate(-50%);
 }
 
-.reddit-user-karma-container{
+.reddit-user-karma-container {
     display: flex;
     padding: 10px 30px;
     background-color: inherit;
     justify-content: space-between;
 }
 
-.karma-container{
+.karma-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
     background-color: inherit;
 
-    >p{
+    >p {
         color: white;
         background-color: inherit;
     }
 
-    >div{
+    >div {
         display: flex;
         gap: 10px;
         align-items: center;
         background-color: inherit;
 
-        >.reddit-user-icon{
+        >.reddit-user-icon {
             color: blue;
             background-color: inherit;
         }
 
-        >span{
+        >span {
             color: $feedTitleColor;
             font-size: 14px;
             background-color: inherit;
         }
+    }
+}
+
+.reddit-user-container-light {
+    background-color: white;
+
+    >.reddit-user-post-container {
+        background-color: inherit;
+
+        >.reddit-post-container {
+            background-color: $lightBackgroundColor;
+
+            >.homepage-post-container {
+                background-color: inherit;
+
+                >.post-author-info-container {
+                    background-color: inherit;
+
+                    >.post-author-info {
+                        background-color: inherit;
+
+                        >img {
+                            background-color: inherit;
+                        }
+
+                        >span {
+                            background-color: inherit;
+                            color: black;
+                        }
+                    }
+
+                    >.post-join-section {
+                        background-color: inherit;
+
+                        >.post-menu-container {
+                            background-color: inherit;
+
+                            >.post-menu-icon-section {
+                                background-color: $lightHoverBackgroundColor;
+
+                                >.post-menu-icon{
+                                    background-color: inherit;
+                                    color: black;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                >.post-image-and-details-container{
+                    background-color: inherit;
+
+                    >p{
+                        background-color: inherit;
+                        color: black;
+                    }
+                }
+            }
+        }
+
+        >hr{
+            background-color: $lineBreakerLightColor;
+        }
+
+        >.reddit-post-container:hover {
+            background-color: $lightHoverBackgroundColor;
+
+            >.homepage-post-container {
+                background-color: inherit;
+
+                >.post-author-info-container {
+                    background-color: inherit;
+
+                    >.post-author-info {
+                        background-color: inherit;
+
+                        >img {
+                            background-color: inherit;
+                        }
+
+                        >span {
+                            background-color: inherit;
+                        }
+                    }
+
+                    >.post-join-section {
+                        background-color: inherit;
+
+                        >.post-menu-container {
+                            background-color: inherit;
+
+                            >.post-menu-icon-section {
+                                background-color: $lightBackgroundColor;
+
+                                >.post-menu-icon{
+                                    background-color: inherit;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                >.post-image-and-details-container{
+                    background-color: inherit;
+
+                    >p{
+                        background-color: inherit;
+                    }
+                }
+            }
+        }
+    }
+
+
+    >.reddit-user-info-container{
+        background-color: $lightBackgroundColor;
+        >.reddit-user-name{
+            background-color: inherit;
+            color: black;
+        }
+
+        >.reddit-user-karma-container{
+            background-color: inherit;
+
+            >.karma-container{
+                background-color: inherit;
+
+                >p{
+                    background-color: inherit;
+                    color: black;
+                }
+            }
+        }
+
+        >.follow{
+            background-color: grey;
+            color: white;
+        }
+
+        >.follow:hover{
+            background-color: black;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .reddit-user-post-container {
+        width: 50%;
+    }
+
+    .reddit-user-info-container {
+        width: 40%;
     }
 }

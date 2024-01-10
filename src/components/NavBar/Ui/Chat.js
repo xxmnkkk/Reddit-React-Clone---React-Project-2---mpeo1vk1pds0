@@ -8,10 +8,11 @@ import { IoMdCloseCircleOutline } from "react-icons/io";
 
 
 export default function chat() {
+  const loginState = useSelector((state) => state.loginState)
   const dispatch = useDispatch();
 
   return (
-    <div className="chat-modal-container">
+    <div className={`chat-modal-container ${loginState.isLightModeActive && "chat-modal-container-light"}`}>
       <div className="chat-modal-bar">
         <span>Chats</span>
         <div className="chat-icon-div">

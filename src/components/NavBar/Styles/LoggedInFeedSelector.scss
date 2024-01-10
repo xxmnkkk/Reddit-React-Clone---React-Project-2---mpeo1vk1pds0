@@ -148,3 +148,98 @@
 .feed-create-community:hover{
     background-color: $searchBarColor;
 }
+
+.loggedin-feed-selector-container-light{
+    background-color: white;
+
+    >.auth-navbar-container{
+        background-color: inherit;
+
+        >div{
+            background-color: white;
+            color: black;
+
+            >.feed-icon{
+                background-color: white;
+                color: black;
+            }
+
+            >span{
+                background-color: white;
+                color: black;
+            }
+        }
+
+        >.dropdown{
+            background-color: white;
+            color: black;
+        }
+    }
+
+    >.feed-selector-modal-container{
+        background-color: white;
+        border: 0.5px solid grey;
+
+        >.feed-create-community{
+            background-color: white;
+            color: black;
+
+            >.logged-feed-icon{
+                background-color: white;
+                color: black;
+            }
+        }
+
+        >.feed-create-community:hover{
+            background-color: $lightHoverBackgroundColor;
+
+            >.logged-feed-icon{
+                background-color: $lightHoverBackgroundColor;
+            }
+        }
+
+        >.feed-selector-container{
+            background-color: inherit;
+            color: black;
+
+            >.feed-icon{
+                background-color: inherit;
+                color: black;
+            }
+        }
+
+        >.feed-selector-container:hover{
+            background-color: $lightHoverBackgroundColor;
+
+            >.feed-icon{
+                background-color: $lightHoverBackgroundColor;
+            }
+        }
+
+        >.feed-selector-other-container{
+            >.feed-selector-container{
+                background-color: white;
+                color: black;
+
+                >.other-icon{
+                    color: black;
+                }
+            }
+
+            >.feed-selector-container:hover{
+                background-color: $lightHoverBackgroundColor;
+
+                >.other-icon{
+                    background-color: $lightHoverBackgroundColor;
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 768px){
+    .loggedin-feed-selector-container{
+        width: 27%;
+    }
+}

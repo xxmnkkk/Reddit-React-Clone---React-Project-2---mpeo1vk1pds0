@@ -59,6 +59,7 @@
 
     >.post-image-and-details-container {
         background-color: inherit;
+        border-radius: 15px;
 
         >p {
             background-color: inherit;
@@ -145,6 +146,10 @@
     transform: rotate(90deg);
 }
 
+.post-menu-icon-2 {
+    transform: rotate(0deg);
+}
+
 .post-menu-icon-section:hover {
     background-color: $searchBarColor;
 
@@ -173,6 +178,7 @@
 .post-image-and-details-container {
     padding: 0px 20px 20px 20px;
     color: $postAuthorColor;
+    border-radius: 15px;
 }
 
 .post-interaction-container{
@@ -216,32 +222,32 @@
 }
 
 .homepage-post-popular-slider{
-    // border: 1px solid red;
+    position: relative;
     margin: 10px 0;
-    height: 200px;
-    width: 139%;
+    height: 180px;
+    width: 145%;
+    // width: 400px;
     display: flex;
-    justify-content: space-between;
-    // gap: 20px;
-    align-items: center;
+    gap: 20px;
+    overflow-x: auto;
 }
 
 .post-slider-card-container{
     width: 290px;
-    height: 193px;
+    min-height: 190px;
     border-radius: 15px;
-    overflow: hidden;
     position: relative;
 
     >img{
         width: inherit;
-        // height: inherit;
+        max-height: 170px;
+        border-radius: inherit;
     }
 
     >p{
         position: absolute;
         color: white;
-        top: 70%;
+        top: 50%;
         background-color: transparent;
         padding: 0 20px;
         font-size: 14px;
@@ -252,7 +258,7 @@
     >span{
         color: white;
         position: absolute;
-        top: 90%;
+        top: 70%;
         left: 20px;
         background-color: transparent;
         font-size: 12px;
@@ -307,5 +313,165 @@
 
     >.post-interaction-container{
         background-color: inherit;
+    }
+}
+
+.homepage-posts-section-light{
+    background-color: white;
+
+    >.homepage-post-popular-slider{
+        background-color: inherit;
+    }
+
+    >hr{
+        background-color: $lineBreakerLightColor;
+    }
+
+    >.homepage-post-container{
+        background-color: white;
+
+        >.post-author-info-container{
+            background-color: white;
+
+            >.post-author-info{
+                background-color: inherit;
+
+                >img{
+                    background-color: inherit;
+                }
+
+                >span{
+                    background-color: inherit;
+                    color: black;
+                }
+            }
+
+            >.post-join-section{
+                background-color: inherit;
+
+                >.post-menu-container{
+                    background-color: inherit;
+
+                    >.post-menu-icon-section{
+                        background-color: $lightBackgroundColor;
+
+                        >.post-menu-icon{
+                            background-color: inherit;
+                            color: black;
+                        }
+                    }
+
+                    >.menu-report{
+                        background-color: $lightBackgroundColor;
+                        color: black;
+
+                        >.post-menu-icon{
+                            background-color: inherit;
+                        }
+                    }
+                }
+            }
+        }
+
+        >.post-image-and-details-container{
+            background-color: white;
+
+            >p{
+                background-color: white;
+                color: black;
+            }
+        }
+
+        >.post-interaction-container{
+            background-color: white;
+
+            >.post-interaction-subcont{
+                background-color: $lightBackgroundColor;
+                color: black;
+
+                >.post-interaction-icon{
+                    background-color: inherit;
+                }
+            }
+
+            >.post-curse:hover{
+                background-color: $lightHoverBackgroundColor;
+            }
+        }
+    }
+
+    >.homepage-post-container:hover{
+        background-color: $lightHoverBackgroundColor;
+
+        >.post-author-info-container{
+            background-color: $lightHoverBackgroundColor;
+
+            >.post-author-info{
+                background-color: inherit;
+
+                >img{
+                    background-color: inherit;
+                }
+
+                >span{
+                    background-color: inherit;
+                }
+            }
+
+            >.post-join-section{
+                background-color: inherit;
+
+                >.post-menu-container{
+                    background-color: inherit;
+
+                    >.post-menu-icon-section{
+                        background-color: $lightBackgroundColor;
+
+                        >.post-menu-icon{
+                            background-color: inherit;
+                        }
+                    }
+
+                    >.menu-report{
+                        background-color: $lightBackgroundColor;
+
+                        >.post-menu-icon{
+                            background-color: inherit;
+                        }
+                    }
+                }
+            }
+        }
+
+        >.post-image-and-details-container{
+            background-color: $lightHoverBackgroundColor;
+
+            >p{
+                background-color: $lightHoverBackgroundColor;
+            }
+        }
+
+        >.post-interaction-container{
+            background-color: $lightHoverBackgroundColor;
+
+            >.post-interaction-subcont{
+                background-color: $lightHoverBackgroundColor;
+
+                >.post-interaction-icon{
+                    background-color: inherit;
+                }
+            }
+
+            >.post-curse:hover{
+                background-color: $lightBackgroundColor;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px)  {
+
+    .homepage-post-popular-slider{
+        width: 148%;
     }
 }

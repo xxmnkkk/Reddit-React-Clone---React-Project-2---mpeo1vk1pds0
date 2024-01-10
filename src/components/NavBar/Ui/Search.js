@@ -46,7 +46,7 @@ export default function search() {
             });
     };
 
-    console.log("Searched data: ", searchState.searchedData);
+    // console.log("Searched data: ", searchState.searchedData);
 
     const handleResultClick = (index) => {
         const selectedData = searchState.searchedData.data[index];
@@ -56,8 +56,8 @@ export default function search() {
     };
 
     return (
-        <div className="navbar-search-container">
-            <div className="navbar-search">
+        <div className={`navbar-search-container ${loginState.isLightModeActive && "navbar-search-container-light"}`}>
+            <div className={`navbar-search ${loginState.isLightModeActive && "navbar-search-light"}`}>
                 <CiSearch className="navbar-search-icon" />
                 <input
                     ref={searchRef}
@@ -70,8 +70,7 @@ export default function search() {
             </div>
 
             {loginState.showSearchModal && searchRef.current.value !== "" &&
-                <div className="navbar-search-modal">
-                    <hr />
+                <div className={`navbar-search-modal ${loginState.isLightModeActive && "navbar-search-modal-light"}`}>
                     {searchState.searchedData && searchState.searchedData.data &&
                         searchState.searchedData.data.map((data, index) => (
                             <div

@@ -40,3 +40,39 @@
 .menu-sub-container:hover{
     background-color: $searchBarHoverColor;
 }
+
+.menu-container-light{
+    position: fixed;
+    top: 57px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    width: 250px;
+    height: 150px;
+    background-color: white;
+    border: 1px solid $lightBackgroundColor;
+    z-index: 2;
+
+    >.menu-sub-container{
+        background-color: inherit;
+
+        >.menu-icon{
+            background-color: inherit;
+            color: black;
+        }
+
+        >p{
+            background-color: inherit;
+            color: black;
+        }
+    }
+
+    >.menu-sub-container:hover{
+        background-color: $lightHoverBackgroundColor;
+    }
+}

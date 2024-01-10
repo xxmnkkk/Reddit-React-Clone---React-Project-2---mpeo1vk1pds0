@@ -87,7 +87,7 @@ export default function CreateCommunity() {
     return (
         <>
             <div className='create-community-modal-layover'>
-                <div className='create-community-modal-container'>
+                <div className={`create-community-modal-container ${loginState.isLightModeActive && "create-community-modal-container-light"}`}>
                     <div className='create-community-modal-header'>
                         <p>Create a community</p>
                         <IoCloseOutline

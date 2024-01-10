@@ -1,7 +1,7 @@
 @import "../../../styles/variables.scss";
 
 .homepage-main-container{
-    width: 99.8%;
+    // width: 100%;
     // height: 800px;
     height: fit-content;
     display: flex;
@@ -10,8 +10,17 @@
     padding: 40px 0;
 }
 
+.homepage-main-container-light{
+    background-color: white;
+
+    >.home-sidenavbar{
+        background-color: white;
+    }
+}
+
 .homepage-side-navbar-container{
-    width: 15%;
+    // width: 15%;
+    width: 100%;
     height: 900px;
     overflow: auto;
     border-right: 1px solid $breakLineColor;
@@ -23,8 +32,13 @@
 .homepage-posts-container{
     position: relative;
     // border-left: 1px solid $breakLineColor;
-    width: 40%;
+    // width: 40%;
+    width: 45%;
     height: 100%;
+}
+
+.homepage-posts-container-light{
+    background-color: white;
 }
 
 // .homepage-popular-communities-container{
@@ -116,4 +130,94 @@
     color: rgb(172,172,172);
     padding: 10px;
     font-size: 14px;
+}
+
+.homepage-side-navbar-container-light{
+    background-color: white;
+    border-right: 1px solid $lineBreakerLightColor;
+
+    >.homepage-sidenav-line-breaker{
+        background-color: $lineBreakerLightColor;
+    }
+
+    >.homepage-feed-selector-container{
+        background-color: white;
+
+        >.homepage-feed-selector{
+            background-color: white;
+            color: black;
+
+            >.homepage-feed-icon{
+                background-color: white;
+                color: black;
+            }
+        }
+
+        >.homepage-feed-selector:hover{
+            background-color: $lightHoverBackgroundColor;
+
+            >.homepage-feed-icon{
+                background-color: $lightHoverBackgroundColor;
+            }
+        }
+    }
+
+    >.homepage-excess-container{
+        background-color: white;
+
+        >.homepage-excess-title{
+            background-color: white;
+
+            >span{
+                background-color: white;
+                color: black;
+            }
+
+            >.homepage-excess-dropdown , .homepage-excess-dropdown-active{
+                background-color: white;
+                color: black;
+            }
+        }
+
+        >.homepage-excess-text{
+            background-color: white;
+
+            >.sidenav-icon{
+                background-color: white;
+                color: black;
+            }
+
+            >span{
+                background-color: white;
+                color: black;
+            }
+        }
+
+        >.homepage-excess-text:hover{
+            background-color: $lightHoverBackgroundColor;
+
+            >.sidenav-icon{
+                background-color: $lightHoverBackgroundColor;
+            }
+
+            >span{
+                background-color: $lightHoverBackgroundColor;
+            }
+        }
+    }
+
+    >.homepage-side-navbar-rights{
+        background-color: white;
+        color: $postAuthorColor;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .homepage-side-navbar-container{
+        z-index: 1002;
+    }
+
+    .homepage-side-navbar-container{
+        width: 80%;
+      }
 }

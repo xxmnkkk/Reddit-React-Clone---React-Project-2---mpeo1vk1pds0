@@ -1,18 +1,19 @@
 import React from 'react'
 import "../Styles/getApp.scss"
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { navigateToPlayStore, navigateToAppStore } from "../../../redux/reducers/externalWebsiteSlice"
 import {handleGetAppClick} from "../../../redux/reducers/loginSlice"
 
 import { IoCloseOutline } from "react-icons/io5";
 
 export default function GetApp() {
+    const loginState = useSelector((state) => state.loginState)
     const dispatch = useDispatch();
 
     return (
         <div className='getapp-modal-layover'>
-            <div className='getapp-modal-container'>
+            <div className={`getapp-modal-container ${loginState.isLightModeActive && "getapp-modal-container-light"}`}>
                 <div className='getapp-bar'>
                     <div className='getapp-bar-text'>Get the Reddit App</div>
                     <div

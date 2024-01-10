@@ -4,13 +4,15 @@ import { IoMdClose } from "react-icons/io";
 import { TbMessageCircle } from "react-icons/tb";
 import { GiBananaBunch } from "react-icons/gi";
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { navigateToRedditRecap } from '../../../redux/reducers/externalWebsiteSlice';
 
 export default function () {
+    const loginState = useSelector((state) => state.loginState)
     const dispatch = useDispatch()
+
     return (
-        <div className="notification-modal">
+        <div className={`notification-modal ${loginState.isLightModeActive && "notification-modal-light"}`}>
             <div
                 className='notification-reddit-recap-container'
                 onClick={() => dispatch(navigateToRedditRecap())}

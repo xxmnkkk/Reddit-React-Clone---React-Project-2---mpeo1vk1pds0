@@ -192,3 +192,33 @@
         transform: translateX(-50%) translateY(-130px);
     }
 }
+
+.create-community-modal-container-light{
+    background-color: white;
+
+    >.create-community-modal-info-container{
+        >.create-community-input-containers{
+            >span{
+                color: black;
+            }
+
+            >input, textarea{
+                background-color: $lightBackgroundColor;
+                color: black;
+            }
+        }
+    }
+
+    >.create-community-type-container label span{
+        color: black;
+    }
+
+    >.create-community-submit-container{
+        background-color: $lightHoverBackgroundColor;
+
+        >div{
+            background-color: black;
+            color: white;
+        }
+    }
+}

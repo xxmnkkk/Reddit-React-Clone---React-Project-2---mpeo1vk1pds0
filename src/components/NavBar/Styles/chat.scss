@@ -40,20 +40,20 @@
     cursor: pointer;
 }
 
-.chat-icon{
+.chat-icon {
     height: 20px;
     width: 20px;
 }
 
-.chat-icon-div:hover{
+.chat-icon-div:hover {
     background-color: $searchBarHoverColor;
 
-    >.chat-icon{
+    >.chat-icon {
         background-color: $searchBarHoverColor;
     }
 }
 
-.chat-modal-main{
+.chat-modal-main {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -61,13 +61,47 @@
     background-color: inherit;
     gap: 20px;
 
-    >img{
+    >img {
         height: 180px;
         width: 180px;
     }
 
-    >h3 , p{
+    >h3,
+    p {
         color: white;
         background-color: inherit;
+    }
+}
+
+.chat-modal-container-light {
+    background-color: $lightBackgroundColor;
+
+    >.chat-modal-bar {
+        background-color: inherit;
+
+        >span {
+            background-color: inherit;
+            color: black;
+        }
+
+        >.chat-icon-div {
+            background-color: $lightHoverBackgroundColor;
+
+            >.chat-icon{
+                background-color: inherit;
+                color: black;
+            }
+        }
+    }
+
+    >.chat-modal-main{
+        >img{
+            background-color: inherit;
+        }
+
+        >h3 , p{
+            background-color: inherit;
+            color: black;
+        }
     }
 }

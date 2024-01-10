@@ -12,10 +12,12 @@ export default function HomePage() {
     const loginState = useSelector((state) => state.loginState)
     return (
         <>
-            <div className="homepage-main-container">
-                {!loginState.isLoggedIn && <HomePageSideNavBar className="home-sidenavbar" />}
+            <div className={`homepage-main-container ${loginState.isLightModeActive && "homepage-main-container-light"}`}>
+                {!loginState.isLoggedIn && <div className="home-sidenavbar">
+                    <HomePageSideNavBar />
+                </div>}
 
-                <div className="homepage-posts-container">
+                <div className={`homepage-posts-container homepage-posts-container-ipad ${loginState.isLightModeActive && "homepage-posts-container-light"}`}>
                     <HomePagePosts />
                 </div>
 

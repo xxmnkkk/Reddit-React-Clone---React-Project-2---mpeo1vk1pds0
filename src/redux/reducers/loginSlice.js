@@ -16,7 +16,10 @@ export const handleLoginAndSignup = createSlice({
     isGetAppActive: false,
     isMenuActive: false,
     onlineStatus: false,
-    isCreateCommunityActive: false
+    isCreateCommunityActive: false,
+    showIpadMenu: false,
+    isLightModeActive: false,
+    currentLocation: ""
   },
   reducers: {
     handleLoginButtonClick: (state) => {
@@ -81,6 +84,15 @@ export const handleLoginAndSignup = createSlice({
     },
     handleCreateCommunityClick: (state) => {
       state.isCreateCommunityActive = !state.isCreateCommunityActive
+    },
+    handleIpadMenuClick: (state) => {
+      state.showIpadMenu = !state.showIpadMenu
+    },
+    handleLightModeActive: (state) => {
+      state.isLightModeActive = !state.isLightModeActive
+    },
+    setCurrentLocation: (state , action) => {
+      state.currentLocation = action.payload
     }
   }
 });
@@ -101,7 +113,10 @@ export const {
   handleGetAppClick,
   handleIsMenuActive,
   handleOnlineStatusClick,
-  handleCreateCommunityClick
+  handleCreateCommunityClick,
+  handleIpadMenuClick,
+  handleLightModeActive,
+  setCurrentLocation
 } = handleLoginAndSignup.actions;
 
 export default handleLoginAndSignup.reducer;

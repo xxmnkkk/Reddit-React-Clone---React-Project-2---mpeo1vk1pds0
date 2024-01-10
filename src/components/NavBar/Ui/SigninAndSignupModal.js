@@ -90,7 +90,7 @@ export default function SigninAndSignupModal() {
   return (
     <div className='signin-and-signup-modal-layover'>
       {loginState.isActiveForm === "login" ?
-        <div className='signin-and-signup-modal-container'>
+        <div className={`signin-and-signup-modal-container ${loginState.isLightModeActive && "signin-and-signup-modal-container-light"}`}>
           <div className='signin-modal-close-logo'>
             <div onClick={() => dispatch(handleLoginModalCloseClick())}>
               <IoCloseOutline className='signin-modal-close' />

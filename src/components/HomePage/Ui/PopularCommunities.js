@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import "../styles/popularCommunities.scss"
+import "../styles/homePage.scss"
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
 import { setPopularCommunnitiesData, handleShowMoreClick } from '../../../redux/reducers/homePageSlice'
@@ -39,10 +40,10 @@ export default function PopularCommunities() {
         }
     }
 
-    console.log("Popular communities",homepageState.popularCommunitiesData);
+    // console.log("Popular communities",homepageState.popularCommunitiesData);
 
     return (
-        <div className={`popular-community-section ${homepageState.selectedFeed === "popular" && "popular-community-section-popularactive"}`}>
+        <div className={`popular-community-section popular-community-section-ipad ${homepageState.selectedFeed === "popular" && "popular-community-section-popularactive"} ${loginState.isLightModeActive && "popular-community-section-light"}`}>
             <div className={`popular-community-container ${homepageState.isShowMoreActive && "popular-community-container-expanded"}`}>
                 <h3>POPULAR COMMUNITIES</h3>
 

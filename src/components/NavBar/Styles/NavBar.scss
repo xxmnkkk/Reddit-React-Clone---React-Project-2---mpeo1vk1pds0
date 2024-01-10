@@ -4,23 +4,34 @@
 .navbar-container {
   background-color: $primaryColor;
   height: 56.55px;
-  width: 96%;
+  // width: 96.3%;
   border-bottom: 1px solid $breakLineColor;
-  margin: 0 30px;
+  padding: 0 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   >.navbar-logo-container {
-    color: white;
-    font-weight: bold;
-    font-size: 30px;
-    font-family: Roboto;
+    // color: white;
+    // font-weight: bold;
+    // font-size: 30px;
+    // font-family: Roboto;
     display: flex;
     justify-content: flex-start;
     gap: 10px;
     align-items: center;
     margin-left: 14px;
+
+    // >.ipad-menu-icon-section{
+    //     display: none;
+    // }
+
+    >span {
+      color: white;
+      font-weight: bold;
+      font-size: 30px;
+      font-family: Roboto;
+    }
 
     >img {
       max-width: 34px;
@@ -31,12 +42,12 @@
   >.navbar-search-container {
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 35%;
 
     .navbar-search {
       position: relative;
       height: 40%;
-      width: 101%;
+      width: 100%;
       border-radius: 20px;
       background-color: $searchBarColor;
       display: flex;
@@ -69,21 +80,52 @@
       }
     }
 
+    .navbar-search-light {
+      background-color: $lightBackgroundColor;
+
+      >.navbar-search-icon {
+        background-color: inherit;
+        color: black;
+      }
+
+      >input {
+        background-color: inherit;
+        color: black;
+      }
+
+      >input:focus {
+        caret-color: black;
+      }
+    }
+
     >.navbar-search:hover {
       background-color: $searchBarHoverColor;
-  
+
       >.navbar-search-icon {
         background-color: $searchBarHoverColor;
       }
-  
+
       >input {
         background-color: $searchBarHoverColor;
       }
     }
 
-    >.navbar-search-modal{
+    >.navbar-search-light:hover {
+      background-color: $lightHoverBackgroundColor;
+
+      >.navbar-search-icon {
+        background-color: $lightHoverBackgroundColor;
+      }
+
+      >input {
+        background-color: $lightHoverBackgroundColor;
+      }
+    }
+
+
+    >.navbar-search-modal {
       position: absolute;
-      width: inherit;
+      width: 40%;
       height: 20px;
       background-color: $searchBarColor;
       z-index: 1;
@@ -96,20 +138,16 @@
       flex-direction: column;
       gap: 15px;
       padding-bottom: 20px;
-      // height: fit-content;
-
-      // >hr{
-      //   position: sticky;
-      //   top: 0;
-      //   background-color: $breakLineColor;
-      //   border: none;
-      //   height: 1px;
-      // }
     }
 
-    >.navbar-search-modal::-webkit-scrollbar{
+    >.navbar-search-modal::-webkit-scrollbar {
       list-style: none;
       width: 0;
+    }
+
+    >.navbar-search-modal-light {
+      background-color: $lightBackgroundColor;
+      box-shadow: none;
     }
   }
 
@@ -145,6 +183,11 @@
       height: 35px;
       border: 0.5px solid $breakLineColor;
     }
+
+    // >p{
+    //   background-color: $lineBreakerLightColor;
+    //   color: $lineBreakerLightColor;
+    // }
 
     >.navbar-getapp-container {
       padding: 10px;
@@ -306,7 +349,7 @@
 .loggedin-user-info:hover {
   background-color: $searchBarHoverColor;
 
-  >.profile-image-div .user-active-green-dot{
+  >.profile-image-div .user-active-green-dot {
     background-color: green;
   }
 
@@ -328,7 +371,7 @@
   }
 }
 
-.user-active-green-dot{
+.user-active-green-dot {
   position: absolute;
   height: 8px;
   width: 8px;
@@ -340,7 +383,7 @@
   .loggedin-user-info {
     background-color: $searchBarHoverColor;
 
-    >.profile-image-div .user-active-green-dot{
+    >.profile-image-div .user-active-green-dot {
       background-color: green;
     }
 
@@ -485,4 +528,391 @@
   width: 18px;
   color: white;
   background-color: $loginAndSignupModalBackgroundColor;
+}
+
+@media screen and (min-width: 769px) {
+  // >.ipad-menu-icon-section {
+  //   display: none;
+
+  //   >.ipad-menu-icon-container {
+  //     display: none;
+
+  //     >.ipad-menu-icon {
+  //       display: none;
+  //     }
+  //   }
+
+  //   >.ipad-menu-modal-layover {
+  //     display: none;
+  //   }
+  // }
+
+  .navbar-logo-container > .ipad-menu-icon-section,
+  .navbar-logo-container > .ipad-menu-icon-section > .ipad-menu-icon-container,
+  .navbar-logo-container > .ipad-menu-icon-section > .ipad-menu-icon-container > .ipad-menu-icon,
+  .navbar-logo-container > .ipad-menu-icon-section > .ipad-menu-modal-layover {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ipad-menu-icon-section {
+    display: block;
+  }
+
+  .navbar-auth-logo-container,
+  .navbar-auth-hornlogo-container {
+    display: none;
+  }
+
+  .navbar-banana-logo-container {
+    display: none;
+
+    >.navbar-banana-logo {
+      display: none;
+    }
+  }
+
+  .navbar-logo-container {
+    display: none;
+
+    >span {
+      display: none;
+    }
+  }
+
+  .navbar-signin-container {
+    gap: 0;
+  }
+
+  .ipad-menu-icon-section {
+    display: flex;
+    flex-direction: column;
+    border: none;
+  }
+
+  .ipad-menu-icon-container {
+    position: relative;
+    background-color: inherit;
+    height: 20px;
+    width: 20px;
+    border: none;
+  }
+
+  .ipad-menu-icon {
+    background-color: inherit;
+    color: white;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    border: none;
+  }
+
+  .ipad-menu-icon-light {
+    background-color: white;
+    color: black;
+    border: none;
+  }
+
+  .ipad-menu-modal-layover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(1px);
+    z-index: 1000;
+  }
+
+  .ipad-menu-modal {
+    position: fixed;
+    // top: 40px;
+    // left: 40px;
+    // transform: translate(-5%, -5%);
+    // background-color: $loginAndSignupModalBackgroundColor;
+    height: 1124px;
+    width: 290px;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .ipad-menu-modal-light {
+    background-color: white;
+  }
+
+  .navbar-search-text {
+    >span {
+      font-size: 16px;
+    }
+
+    >p {
+      font-size: 14px;
+    }
+  }
+
+  .navbar-search-image {
+    width: 20px;
+    height: 20px;
+
+    >img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+
+
+
+.navbar-container-light {
+  background-color: white;
+
+  border-bottom: 1px solid $lineBreakerLightColor;
+
+  >.navbar-logo-container {
+    background-color: white;
+
+    >img {
+      background-color: white;
+    }
+
+    >span {
+      background-color: white;
+      color: rgb(255, 70, 0);
+    }
+  }
+
+  >.navbar-signin-container {
+    background-color: white;
+
+    >.navbar-auth-logo-container {
+      background-color: white;
+
+      >.navbar-auth-logo {
+        background-color: white;
+        color: black;
+      }
+    }
+
+    >.navbar-banana-logo-container {
+      background-color: white;
+
+      >.navbar-banana-logo {
+        background-color: white;
+      }
+    }
+
+    >.navbar-divider{
+      border: 1px solid $lineBreakerLightColor;
+    }
+
+    >.navbar-auth-hornlogo-container {
+      background-color: $lightBackgroundColor;
+
+      >.navbar-auth-hornlogo {
+        background-color: inherit;
+        color: black;
+      }
+    }
+
+    >.navbar-auth-hornlogo-container:hover {
+      background-color: $lightHoverBackgroundColor;
+
+      >.navbar-auth-hornlogo {
+        background-color: inherit;
+        color: black;
+      }
+    }
+
+    >.navbar-auth-logo-container:hover {
+      background-color: $lightHoverBackgroundColor;
+
+      >.navbar-auth-logo {
+        background-color: $lightHoverBackgroundColor;
+        color: black;
+      }
+    }
+
+    >.navbar-banana-logo-container:hover {
+      background-color: $lightHoverBackgroundColor;
+
+      >.navbar-banana-logo {
+        background-color: $lightHoverBackgroundColor;
+      }
+    }
+
+    >.navbar-getapp-container {
+      background-color: $lightBackgroundColor;
+
+      >.navbar-qr-code {
+        background-color: inherit;
+        color: black;
+      }
+
+      >span {
+        background-color: inherit;
+        color: black;
+      }
+    }
+
+    >.navbar-getapp-container:hover {
+      background-color: $lightHoverBackgroundColor;
+
+      >.navbar-qr-code {
+        background-color: inherit;
+        color: black;
+      }
+
+      >span {
+        background-color: inherit;
+        color: black;
+      }
+    }
+
+    >.navbar-horizontal-kabab {
+      background-color: white;
+
+      >.navbar-kabab {
+        background-color: white;
+        color: black;
+      }
+    }
+
+    >.navbar-horizontal-kabab:hover {
+      background-color: $lightHoverBackgroundColor;
+
+      >.navbar-kabab {
+        background-color: $lightHoverBackgroundColor;
+        color: black;
+      }
+    }
+
+    >.loggedin-user-profile-container {
+      background-color: white;
+
+      >.loggedin-user-info {
+        background-color: $lightBackgroundColor;
+
+        >.profile-image-div {
+          background-color: inherit;
+
+          >.user-active-green-dot{
+            background-color: green;
+          }
+        }
+
+        >div {
+          background-color: $lightBackgroundColor;
+
+          >p {
+            background-color: inherit;
+            color: black;
+          }
+
+          >div {
+            background-color: inherit;
+
+            >.karma-flower-icon {
+              background-color: inherit;
+            }
+          }
+        }
+
+        >.loggedin-user-dowpdown {
+          background-color: inherit;
+          color: black;
+        }
+      }
+
+      >.loggedin-user-info:hover {
+        background-color: $lightHoverBackgroundColor;
+
+        >.profile-image-div {
+          background-color: inherit;
+
+          // >.user-active-green-dot{
+          //   background-color: green;
+          // }
+        }
+
+        >div {
+          background-color: $lightHoverBackgroundColor;
+
+          >p {
+            background-color: inherit;
+          }
+
+          >div {
+            background-color: inherit;
+
+            >.karma-flower-icon {
+              background-color: inherit;
+            }
+          }
+        }
+
+        >.loggedin-user-dowpdown {
+          background-color: inherit;
+        }
+      }
+
+      >.profile-modal {
+        background-color: white;
+
+        >.profile-modal-line-break {
+          background-color: $lineBreakerLightColor;
+        }
+
+        >.profile-modal-mystuff-container {
+          background-color: inherit;
+
+          >.profile-modal-mystuff-suncont-head {
+            background-color: inherit;
+            color: black;
+
+            >.profile-modal-user-icon {
+              color: black;
+            }
+          }
+
+          >.profile-modal-mystuff-suncont {
+            background-color: inherit;
+
+            >.profile-excess-logo {
+              background-color: inherit;
+              color: black;
+            }
+
+            >span {
+              color: black;
+            }
+          }
+
+          >p {
+            background-color: inherit;
+            color: black;
+          }
+
+          >.profile-modal-mystuff-suncont:hover {
+            background-color: $lightHoverBackgroundColor;
+
+            >.profile-banana-logo {
+              background-color: inherit;
+            }
+
+            >.profile-excess-logo {
+              background-color: inherit;
+            }
+
+            >span {
+              background-color: $lightHoverBackgroundColor;
+            }
+          }
+        }
+      }
+    }
+  }
 }

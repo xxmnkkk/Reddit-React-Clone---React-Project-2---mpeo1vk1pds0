@@ -5,6 +5,7 @@
     gap: 20px;
     justify-content: center;
     padding: 40px 0;
+    min-height: 850px;
 }
 
 .createpost-information-taker-container {
@@ -60,13 +61,14 @@
 
 .createpost-rules {
     width: 20%;
-    height: 350px;
+    height: fit-content;
     border: 1px solid $breakLineColor;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     background-color: $loginAndSignupModalBackgroundColor;
+    padding: 20px 0;
 
     >div {
         padding: 10px;
@@ -127,5 +129,86 @@
 
     to {
         transform: translateX(-50%) translateY(-130px);
+    }
+}
+
+.create-post-main-container-light{
+    background-color: white;
+
+    >.createpost-information-taker-container{
+        background-color: $lightBackgroundColor;
+        border: 1px solid $lineBreakerLightColor;
+
+        >.create-community-modal-header{
+            border-bottom: 1px solid $lightHoverBackgroundColor;
+        }
+
+        >.create-community-modal-info-container{
+            border-bottom: none;
+
+            >.create-community-input-containers{
+                >span{
+                    color: black;
+                }
+
+                >input , textarea{
+                    background-color: $lightBackgroundColor;
+                    color: black;
+                }
+            }
+        }
+
+        >.create-post-notification-container{
+            background-color: $lightHoverBackgroundColor;
+
+            >div{
+                color: black;
+            }
+
+            >p{
+                color: rgb(0,121,211);
+            }
+        }
+    }
+
+    >.createpost-rules{
+        background-color: $lightBackgroundColor;
+        border: 1px solid $lineBreakerLightColor;
+
+        >div{
+            background-color: inherit;
+
+            >p{
+                color: black;
+                background-color: inherit;
+            }
+        }
+
+        >hr{
+            background-color: $lightHoverBackgroundColor;
+        }
+
+        >p{
+            color: black;
+        }
+    }
+}
+
+
+
+@media screen and (max-width: 768px){
+    .create-post-main-container{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        // margin-left: 2%;
+    }
+
+    .createpost-information-taker-container{
+        width: 95%;
+    }
+
+    .createpost-rules{
+        width: 50%;
     }
 }

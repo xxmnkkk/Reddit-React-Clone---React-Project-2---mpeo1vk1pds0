@@ -90,3 +90,15 @@
     background-color: inherit;
     color: $bananaColor;
 }
+
+.notification-modal-light{
+    background-color: $lightBackgroundColor;
+    border: 1px solid $lightHoverBackgroundColor;
+
+    >.notification-text{
+        >h3 , p{
+            background-color: inherit;
+            color: black;
+        }
+    }
+}

@@ -3,8 +3,8 @@ import "./styles/searchedUser.scss"
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 // import { handleSearchModal } from '../../redux/reducers/loginSlice';
-import {setHomePagePostsData} from "../../redux/reducers/homePageSlice"
-import {setSearchedData , setFollowing} from "../../redux/reducers/searchSlice"
+import { setHomePagePostsData } from "../../redux/reducers/homePageSlice"
+import { setSearchedData, setFollowing } from "../../redux/reducers/searchSlice"
 
 import { CiMenuKebab } from "react-icons/ci";
 import { TiArrowDownOutline, TiArrowUpOutline } from "react-icons/ti";
@@ -16,7 +16,7 @@ import { FaBirthdayCake } from "react-icons/fa";
 export default function Subreddit() {
     const searchState = useSelector((state) => state.searchState);
     const homepageState = useSelector((state) => state.homepageState);
-    // const loginState = useSelector((state) => state.loginState)
+    const loginState = useSelector((state) => state.loginState)
     const dispatch = useDispatch();
     const searchedData = searchState.searchedData.data
     // const searchedData = Array.isArray(searchState.searchedData) ? searchState.searchedData : [];
@@ -24,36 +24,40 @@ export default function Subreddit() {
     console.log("searched data: ", searchedData);
 
     return (
-        <div className='reddit-user-container'>
+        <div className={`reddit-user-container ${loginState.isLightModeActive && "reddit-user-container-light"}`}>
             <div className='reddit-user-post-container'>
                 {searchedData &&
                     searchedData.map((data, index) => (
-                        <div className='reddit-post-container' key={index}>
-                            <div
-                                className={`homepage-post-container`} >
-                                <div className='post-author-info-container'>
-                                    <div className='post-author-info'>
-                                        <img src={data.author.profileImage} />
-                                        <span>r/{data.author.name}</span>
-                                    </div>
-                                    <div className='post-join-section'>
-                                        <div className='post-menu-container'>
-                                            <div
-                                                className='post-menu-icon-section'
-                                                onClick={() => handleMenuToggle(index)}
-                                            >
-                                                <CiMenuKebab className='post-menu-icon' />
+                        <>
+                            <div className='reddit-post-container' key={index}>
+                                <div
+                                    className={`homepage-post-container`}
+                                >
+                                    <div className='post-author-info-container'>
+                                        <div className='post-author-info'>
+                                            <img src={data.author.profileImage} />
+                                            <span>r/{data.author.name}</span>
+                                        </div>
+                                        <div className='post-join-section'>
+                                            <div className='post-menu-container'>
+                                                <div
+                                                    className='post-menu-icon-section'
+                                                    onClick={() => handleMenuToggle(index)}
+                                                >
+                                                    <CiMenuKebab className='post-menu-icon' />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div className='post-image-and-details-container'>
-                                    <p>{data.content}</p>
+                                    <div className='post-image-and-details-container'>
+                                        <p>{data.content}</p>
+                                    </div>
                                 </div>
                             </div>
+
                             <hr />
-                        </div>
+                        </>
                     ))
                 }
             </div>
@@ -69,14 +73,14 @@ export default function Subreddit() {
                     <div className='karma-container'>
                         <p>Karma</p>
                         <div>
-                            <GiSpotedFlower className='reddit-user-icon'/>
+                            <GiSpotedFlower className='reddit-user-icon' />
                             <span>1000</span>
                         </div>
                     </div>
                     <div className='karma-container'>
                         <p>Cake Day</p>
                         <div>
-                            <FaBirthdayCake className='reddit-user-icon'/>
+                            <FaBirthdayCake className='reddit-user-icon' />
                             <span>January 01, 2024</span>
                         </div>
                     </div>

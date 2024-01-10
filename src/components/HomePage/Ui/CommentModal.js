@@ -10,7 +10,8 @@ import { PiArrowsInLineHorizontalDuotone, PiWarningDiamond } from "react-icons/p
 import { BsSuperscript, BsCardHeading } from "react-icons/bs";
 
 export default function CommentModal() {
-  const homePageState = useSelector((state) => state.homePageState)
+  const homePageState = useSelector((state) => state.homePageState);
+  const loginState = useSelector((state) => state.loginState);
   const dispatch = useDispatch();
   const commentRef = useRef();
   const [localComments, setLocalComments] = useState([]);
@@ -20,7 +21,8 @@ export default function CommentModal() {
   }, [homePageState.comments]);
 
   const loggedInUser = JSON.parse(sessionStorage.getItem("LoggedInUser"));
-  const user = loggedInUser.name;
+  // const user = loggedInUser.name;
+  const user = loggedInUser ? loggedInUser.name : '';
 
   const postId = homePageState.comments.length > 0 ? homePageState.comments[0].post : null;
   const token = sessionStorage.getItem("token")
@@ -45,7 +47,7 @@ export default function CommentModal() {
       .then(response => response.json())
       .then(data => {
         dispatch(updateComments(data));
-        console.log('Comment posted successfully:', data);
+        // console.log('Comment posted successfully:', data);
       })
       .catch(error => {
         console.error('Error posting comment:', error);
@@ -66,7 +68,7 @@ export default function CommentModal() {
       .then(response => response.json())
       .then(data => {
         dispatch(updateComments(data));
-        console.log('Comment deleted successfully:', data);
+        // console.log('Comment deleted successfully:', data);
       })
       .catch(error => {
         console.error('Error deleted comment:', error);
@@ -75,7 +77,7 @@ export default function CommentModal() {
 
 
   return (
-    <div className='comment-container'>
+    <div className={`comment-container ${loginState.isLightModeActive && "comment-container-light"}`}>
       <div className='comment-username'>
         Comment as <span>{user}</span>
       </div>
@@ -110,7 +112,7 @@ export default function CommentModal() {
         <div className='otheruser-comment-container' key={index}>
           <div className='reddit-comment-author-name'>redditUser{data.author.slice(0, 6)}</div>
           <div className='reddit-comment-1'>
-            <p>{data.content}</p>
+            <p className={`${loginState.isLightModeActive && "light-p"}`}>{data.content}</p>
             <div
               className='comment-delete'
               onClick={() => handleDeleteComment(data._id)}
@@ -126,7 +128,7 @@ export default function CommentModal() {
                 >
                   <div className='reddit-comment-author-name'>redditChildUser{data.author.slice(0, 6)}</div>
                   <div className='reddit-comment-1'>
-                    <p>{data.content}</p>
+                    <p className={`${loginState.isLightModeActive && "light-p"}`}>{data.content}</p>
 
                     <div
                       className='comment-delete'

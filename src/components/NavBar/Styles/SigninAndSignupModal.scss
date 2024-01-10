@@ -8,7 +8,7 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(1px);
-    z-index: 1;
+    z-index: 1000;
 }
 
 .signin-and-signup-modal-container {
@@ -146,3 +146,56 @@
     padding-top: 40px;
 }
 
+
+.signin-and-signup-modal-container-light{
+    background-color: white;
+
+    >.signin-modal-close-logo{
+        background-color: inherit;
+
+        >div{
+            background-color: inherit;
+
+            >.signin-modal-close{
+                background-color: $lightBackgroundColor;
+                color: black;
+            }
+        }
+
+        >div:hover{
+            background-color: $lightHoverBackgroundColor;
+            
+            >.signin-modal-close{
+                background-color: $lightHoverBackgroundColor;
+                color: black;
+            }
+        }
+    }
+
+    >.signin-modal-texts{
+        background-color: inherit;
+
+        >h1, p{
+            color: black;
+
+            >span{
+                background-color: inherit;
+            }
+        }
+    }
+
+    >.login-input-section{
+        >input{
+            background-color: $lightBackgroundColor;
+            color: black;
+        }
+
+        >input:hover{
+            background-color: $lightHoverBackgroundColor;
+        }
+
+        >p{
+            color: black;
+        }
+    }
+}

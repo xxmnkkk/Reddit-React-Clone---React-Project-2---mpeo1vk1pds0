@@ -13,7 +13,7 @@ const homePageState = createSlice({
         isPostMenuActive: false,
         activePostIndex: null,
         sortedPostData:[],
-        isCommentActive: true,
+        isCommentActive: false,
         comments: [],
         myComment: ""
     },
@@ -40,11 +40,7 @@ const homePageState = createSlice({
             state.homePagePostsData = action.payload
         },
         setIsPostMenuActive: (state , action) => {
-            state.activePostIndex = action.payload
-
-            if(state.activePostIndex === action.payload){
-                state.isPostMenuActive = !state.isPostMenuActive
-            }
+            state.isPostMenuActive = !state.isPostMenuActive;
         },
         setActivePostIndex: (state , action) => {
             state.activePostIndex = action.payload

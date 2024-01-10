@@ -1,26 +1,28 @@
 @import "../../../styles/variables.scss";
 
-.getapp-modal-layover{
+.getapp-modal-layover {
     position: fixed;
+    top: 0;
+    left: 0;
     height: 100%;
     width: 100%;
     background: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(1px);
-    z-index: 1;
+    z-index: 1000;
 }
 
-.getapp-modal-container{
+.getapp-modal-container {
     height: 432px;
     width: 432px;
     position: fixed;
     top: 45%;
     left: 50%;
-    transform: translate(-45% , -50%);
+    transform: translate(-45%, -50%);
     border-radius: 5px;
     background-color: $loginAndSignupModalBackgroundColor;
 }
 
-.getapp-bar{
+.getapp-bar {
     padding: 14px;
     display: flex;
     align-items: center;
@@ -29,7 +31,7 @@
     border-radius: inherit;
 }
 
-.getapp-bar-text{
+.getapp-bar-text {
     color: white;
     font-size: 26px;
     font-weight: bold;
@@ -37,26 +39,26 @@
     background-color: inherit;
 }
 
-.getapp-bar-text-container{
+.getapp-bar-text-container {
     color: white;
     border-radius: 25px;
     padding: 5px;
-    background-color: rgb(33,50,55);
+    background-color: rgb(33, 50, 55);
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
 
-    >.getapp-bar-close-icon{
+    >.getapp-bar-close-icon {
         background-color: inherit;
     }
 }
 
-.getapp-bar-text-container:hover{
-background-color: $searchBarColor;
+.getapp-bar-text-container:hover {
+    background-color: $searchBarColor;
 }
 
-.getapp-main-container{
+.getapp-main-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -65,24 +67,64 @@ background-color: $searchBarColor;
     padding-top: 30px;
     background-color: inherit;
 
-    >h3{
+    >h3 {
         color: white;
         font-size: 20px;
         background-color: inherit;
     }
 
-    >p{
+    >p {
         color: white;
         font-size: 16px;
         background-color: inherit;
     }
 }
 
-.getapp-download-links{
+.getapp-download-links {
     display: flex;
     gap: 5px;
 
-    >img{
+    >img {
         cursor: pointer;
+    }
+}
+
+.getapp-modal-container-light {
+    background-color: white;
+
+    >.getapp-bar {
+        background-color: inherit;
+
+        >.getapp-bar-text {
+            background-color: inherit;
+            color: black;
+        }
+
+        >.getapp-bar-text-container {
+            background-color: inherit;
+
+            >.getapp-bar-close-icon {
+                background-color: inherit;
+                color: black;
+            }
+        }
+    }
+
+    >.getapp-main-container{
+        background-color: inherit;
+
+        >h3{
+            background-color: inherit;
+            color: black;
+        }
+
+        >img{
+            background-color: inherit;
+        }
+
+        >p{
+            background-color: inherit;
+            color: black;
+        }
     }
 }

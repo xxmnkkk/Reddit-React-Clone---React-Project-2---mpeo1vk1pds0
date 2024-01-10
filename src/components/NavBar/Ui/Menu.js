@@ -1,7 +1,7 @@
 import React from 'react'
 import "../Styles/menu.scss"
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { navigateToRedditAdvertise , navigateToRedditAvatar} from "../../../redux/reducers/externalWebsiteSlice"
 import {handleLoginButtonClick , handleIsMenuActive} from "../../../redux/reducers/loginSlice"
 
@@ -10,6 +10,7 @@ import { TbPointerHeart } from "react-icons/tb";
 import { IoBagHandleOutline } from "react-icons/io5";
 
 export default function Menu() {
+  const loginState = useSelector((state) => state.loginState)
   const dispatch = useDispatch();
 
   const handleMenuButtonClick = () => {
@@ -18,7 +19,7 @@ export default function Menu() {
   }
 
   return (
-    <div className='menu-container'>
+    <div className={`menu-container ${loginState.isLightModeActive && "menu-container-light"}`}>
       <div
         className='menu-sub-container'
         onClick={() => handleMenuButtonClick()}

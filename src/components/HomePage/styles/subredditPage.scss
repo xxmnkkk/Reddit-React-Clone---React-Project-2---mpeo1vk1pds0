@@ -228,3 +228,13 @@
         color: white;
     }
 }
+
+@media screen and (max-width: 768px){
+    .subreddit-post-container{
+        width: 60%;
+    }
+
+    .subreddit-details-container{
+        width: 30%;
+    }
+}

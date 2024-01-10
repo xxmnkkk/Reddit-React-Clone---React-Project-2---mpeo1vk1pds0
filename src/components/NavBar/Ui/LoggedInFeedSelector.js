@@ -20,6 +20,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function LoggedInFeedSelector() {
   const feedSelectorState = useSelector(state => state.feedSelectorState);
+  const loginState = useSelector((state) => state.loginState)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -69,7 +70,7 @@ export default function LoggedInFeedSelector() {
   // }
 
   return (
-    <div className='loggedin-feed-selector-container'>
+    <div className={`loggedin-feed-selector-container ${loginState.isLightModeActive && "loggedin-feed-selector-container-light"}`}>
       <div className={`auth-navbar-container ${feedSelectorState.isFeedModalVisible ? "feed-modal-active" : ""}`} onClick={() => dispatch(setFeedModal())}>
         <div>
           {selectedFeedOption.icon}
@@ -87,7 +88,7 @@ export default function LoggedInFeedSelector() {
               dispatch(setFeedModal())
             }}
           >
-            <IoAdd />
+            <IoAdd className='logged-feed-icon' />
             Create community
           </div>
           <span>FEEDS</span>
@@ -95,12 +96,24 @@ export default function LoggedInFeedSelector() {
             <div
               key={index}
               className={`feed-selector-container feed-container-one ${index === 2 && "all"}`}
-              onClick={() => handleFeedChange(index, feed.text)}
+              onClick={() => {
+                if (loginState.currentLocation !== "/") {
+                  navigate("/")
+                  dispatch(setSelectedFeed(feed.text.toLowerCase()));
+                  dispatch(setIndex(index));
+                  dispatch(setFeedModal())
+                }
+                else {
+                  dispatch(setSelectedFeed(feed.text.toLowerCase()));
+                  handleFeedChange(index, feed.text.toLowerCase())
+                }
+              }}
             >
               {feed.icon}
               {feed.text}
             </div>
           ))}
+
           <span>OTHER</span>
           <div className='feed-selector-other-container'>
             <div className='feed-selector-container feed-selector-container-usersetting'>

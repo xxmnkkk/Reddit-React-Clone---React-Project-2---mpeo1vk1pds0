@@ -36,6 +36,16 @@ const postSliderData = [
         image: "https://preview.redd.it/its-happening-v0-o2p0rdakxv7c1.jpeg?auto=webp&s=eb6a18c7f8b2f3403e55886a867b64b3384e4350",
         text: "It's happening!",
         channel: "r/cfbmemes "
+    },
+    {
+        image: "https://i.redd.it/apple-vision-pro-available-in-the-u-s-on-february-2-v0-uo801aw4wcbc1.png?s=bbefcec1ee6f95e71cd0a66a37698e387dcfce54",
+        text: "APPLE VISION PRO AVAILABLE IN THE U.S. ON FEBRUARY 2",
+        channel: "r/Nextech3Dai "
+    },
+    {
+        image: "https://i.redd.it/hidden-red-dead-redemption-2-reference-on-gta-6-trailer-v0-1z036c68pibc1.jpeg?s=669c16519aa2475e0a1294ba3197abecb3ed3754",
+        text: "Hidden RDR2 reference on gta 6 trailer?",
+        channel: "r/CourseWorried2500"
     }
 ]
 
@@ -47,6 +57,8 @@ export default function HomePagePosts() {
     const dispatch = useDispatch();
 
     const [sortedPosts, setSortedPosts] = useState([]);
+    const [joined, setJoined] = useState(false);
+    const [joinedStatus, setJoinedStatus] = useState({});
 
     useEffect(() => {
         const config = {
@@ -74,13 +86,14 @@ export default function HomePagePosts() {
 
 
     function handleMenuToggle(index) {
-        dispatch(setIsPostMenuActive(index))
+        dispatch(setActivePostIndex(index))
+        dispatch(setIsPostMenuActive())
     }
 
     // console.log("index", homepageState.activePostIndex);
     // console.log("sorted posts: ", sortedPosts);
     // console.log("selected feed: ", homepageState.selectedFeed);
-    console.log("Post data: ", homepageState.homePagePostsData);
+    // console.log("Post data: ", homepageState.homePagePostsData);
 
     const token = sessionStorage.getItem("token")
     const trimmedToken = token ? token.slice(1, -1) : null;
@@ -180,10 +193,10 @@ export default function HomePagePosts() {
         }
     }
 
-    console.log("Comments: ", homepageState.comments);
+    // console.log("Comments: ", homepageState.comments);
 
     return (
-        <div className="homepage-posts-section">
+        <div className={`homepage-posts-section ${loginState.isLightModeActive && "homepage-posts-section-light"}`}>
             {homepageState.selectedFeed === "popular" &&
                 <div className='homepage-post-popular-slider'>
                     {postSliderData &&
@@ -206,11 +219,24 @@ export default function HomePagePosts() {
                             className={`homepage-post-container ${homepageState.activePostIndex === index && homepageState.isCommentActive && "homepage-post-container-active"}`} >
                             <div className='post-author-info-container'>
                                 <div className='post-author-info'>
-                                    <img src={data.author.profileImage} />
-                                    <span>r/{data.author.name}</span>
+                                    <img src={data?.author?.profileImage} />
+                                    <span>r/{data?.author?.name}</span>
                                 </div>
                                 <div className='post-join-section'>
-                                    <span>Join</span>
+                                    <span
+                                        onClick={() => {
+                                            dispatch(setActivePostIndex(index))
+                                            // setJoined(!joined)
+
+                                            setJoinedStatus(prevStatus => {
+                                                const newStatus = { ...prevStatus };
+                                                newStatus[index] = !newStatus[index];
+                                                return newStatus;
+                                            });
+                                        }}
+                                    >
+                                        {joinedStatus[index] ? "Joined" : "Join"}
+                                    </span>
                                     <div className='post-menu-container'>
                                         <div
                                             className='post-menu-icon-section'
@@ -221,7 +247,7 @@ export default function HomePagePosts() {
 
                                         {homepageState.isPostMenuActive && homepageState.activePostIndex === index &&
                                             <div className='menu-report'>
-                                                <CiFlag1 />
+                                                <CiFlag1 className='post-menu-icon post-menu-icon-2' />
                                                 Report
                                             </div>
                                         }
@@ -259,7 +285,7 @@ export default function HomePagePosts() {
                             </div>
                         </div>
 
-                        {homepageState.isCommentActive && homepageState.activePostIndex === index && <CommentModal />}
+                        {loginState.isLoggedIn && homepageState.isCommentActive && homepageState.activePostIndex === index && <CommentModal />}
 
                         <hr />
                     </React.Fragment>
@@ -274,11 +300,25 @@ export default function HomePagePosts() {
                         >
                             <div className='post-author-info-container'>
                                 <div className='post-author-info'>
-                                    <img src={data.author.profileImage} />
-                                    <span>r/{data.author.name}</span>
+                                    <img src={data?.author?.profileImage} />
+                                    <span>r/{data?.author?.name}</span>
                                 </div>
                                 <div className='post-join-section'>
-                                    <span>Join</span>
+                                    {/* <span>Join</span> */}
+                                    <span
+                                        onClick={() => {
+                                            dispatch(setActivePostIndex(index))
+                                            // setJoined(!joined)
+
+                                            setJoinedStatus(prevStatus => {
+                                                const newStatus = { ...prevStatus };
+                                                newStatus[index] = !newStatus[index];
+                                                return newStatus;
+                                            });
+                                        }}
+                                    >
+                                        {joinedStatus[index] ? "Joined" : "Join"}
+                                    </span>
                                     <div className='post-menu-container'>
                                         <div
                                             className='post-menu-icon-section'
@@ -289,7 +329,7 @@ export default function HomePagePosts() {
 
                                         {homepageState.isPostMenuActive && homepageState.activePostIndex === index &&
                                             <div className='menu-report'>
-                                                <CiFlag1 />
+                                                <CiFlag1 className='post-menu-icon' />
                                                 Report
                                             </div>
                                         }
@@ -326,7 +366,7 @@ export default function HomePagePosts() {
                                 </div>
                             </div>
 
-                            {homepageState.isCommentActive && homepageState.activePostIndex === index && <CommentModal />}
+                            {loginState.isLoggedIn && homepageState.isCommentActive && homepageState.activePostIndex === index && <CommentModal />}
                         </div>
 
                         <hr />

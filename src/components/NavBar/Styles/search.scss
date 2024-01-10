@@ -44,6 +44,33 @@
     }
 }
 
+.navbar-search-modal-light{
+    >.navbar-search-modal-subcont{
+        background-color: $lightBackgroundColor;
+
+        >.navbar-search-text{
+            background-color: inherit;
+
+            >span{
+                background-color: inherit;
+                color: black;
+            }
+        }
+    }
+    
+    >.navbar-search-modal-subcont:hover{
+        background-color: $lightHoverBackgroundColor;
+
+        >.navbar-search-text{
+            background-color: inherit;
+
+            >span{
+                background-color: inherit;
+            }
+        }
+    }
+}
+
 .navbar-search-modal-subcont:hover{
     background-color: $searchBarHoverColor;
     cursor: pointer;
@@ -55,4 +82,8 @@
             background-color: inherit;
         }
     }
+}
+
+.navbar-search-container-light{
+    background-color: white;
 }

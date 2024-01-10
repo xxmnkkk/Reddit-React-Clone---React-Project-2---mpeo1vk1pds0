@@ -68,6 +68,10 @@
     >p {
         background-color: inherit;
     }
+
+    .light-p{
+        color: black;
+    }
 }
 
 .postcomment-button {
@@ -99,6 +103,10 @@
         background-color: inherit;
         color: white;
     }
+
+    .light-p{
+        color: black;
+    }
 }
 
 .reddit-comment-children{
@@ -120,4 +128,53 @@ textarea:focus{
 
 .comment-delete:hover{
     color: red;
+}
+
+.comment-container-light{
+    background-color: $lightBackgroundColor;
+
+    >.comment-username{
+        background-color: inherit;
+        color: black;
+
+        >span{
+            background-color: inherit;
+            color: $commentAuthorColor;
+        }
+    }
+
+    >.post-comment-container{
+        background-color: inherit;
+
+        >textarea{
+            background-color: $lightHoverBackgroundColor;
+        }
+
+        >.postcomment-icon-container{
+            background-color: inherit;
+
+            >.post-icon-container{
+                background-color: inherit;
+
+                >.postcomment-icon{
+                    background-color: inherit;
+                    color: black;
+                }
+            }
+
+            >.postcomment-text{
+                background-color: inherit;
+
+                >p{
+                    background-color: inherit;
+                    color: black;
+                }
+
+                >.postcomment-button{
+                    background-color: $lightHoverBackgroundColor;
+                    color: black;
+                }
+            }
+        }
+    }
 }

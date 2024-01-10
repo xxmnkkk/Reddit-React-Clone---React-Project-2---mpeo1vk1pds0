@@ -10,7 +10,10 @@ import {
     handleIsNotificationActive,
     handleGetAppClick,
     handleIsMenuActive,
-    handleOnlineStatusClick
+    handleOnlineStatusClick,
+    handleIpadMenuClick,
+    handleLightModeActive,
+    handleCreateCommunityClick
 } from "../../redux/reducers/loginSlice";
 
 import {
@@ -50,14 +53,18 @@ import { CiBullhorn } from "react-icons/ci";
 import { IoAdd, IoNotificationsOutline } from "react-icons/io5";
 import { AiOutlineMessage } from "react-icons/ai";
 import { CgArrowTopRightO } from "react-icons/cg";
+import { IoMdMenu } from "react-icons/io";
+import { IoMdClose } from "react-icons/io";
 import { CiSearch } from "react-icons/ci"
 import { BsQrCodeScan } from "react-icons/bs";
 import { CiMenuKebab } from "react-icons/ci";
 import { GiBananaPeeled } from "react-icons/gi";
+
 import GetApp from "./Ui/GetApp.js";
 import Menu from "./Ui/Menu.js";
 import CreateCommunity from "./Ui/CreateCommunity.js";
 import { useNavigate } from "react-router-dom";
+import HomePageSideNavBar from "../HomePage/Ui/HomePageSideNavBar.js";
 
 
 export default function NavBar() {
@@ -89,10 +96,33 @@ export default function NavBar() {
     return (
 
         <>
-            <div className='navbar-container'>
+            <div className={`navbar-container ${loginState.isLightModeActive && "navbar-container-light"}`}>
                 <div className='navbar-logo-container'>
+                    {!loginState.isLoggedIn &&
+                        <div className={`ipad-menu-icon-section ${loginState.isLightModeActive && "ipad-menu-icon-section-light"}`}>
+                            <div
+                                className="ipad-menu-icon-container"
+                                onClick={() => dispatch(handleIpadMenuClick())}
+                            >
+                                <IoMdMenu className={`ipad-menu-icon ${loginState.isLightModeActive && "ipad-menu-icon-light"}`} />
+                            </div>
+
+                            {
+                                loginState.showIpadMenu &&
+                                <div
+                                    className="ipad-menu-modal-layover"
+                                    onClick={() => dispatch(handleIpadMenuClick())}
+                                >
+                                    <div className={`ipad-menu-modal ${loginState.isLightModeActive && "ipad-menu-modal-light"}`}>
+                                        <HomePageSideNavBar />
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+
                     <img src={RedditLogo} />
-                    reddit
+                    <span>reddit</span>
                 </div>
 
                 {loginState.isLoggedIn &&
@@ -106,8 +136,14 @@ export default function NavBar() {
                         <div
                             className="navbar-auth-logo-container"
                             onClick={() => {
-                                dispatch(setSelectedFeed("popular"));
-                                dispatch(setIndex(1));
+                                if(loginState.currentLocation !== "/"){
+                                    navigate("/")
+                                    dispatch(setSelectedFeed("popular"));
+                                    dispatch(setIndex(1));
+                                }else{
+                                    dispatch(setSelectedFeed("popular"));
+                                    dispatch(setIndex(1));
+                                }
                             }}
                         >
                             <CgArrowTopRightO className="navbar-auth-logo" />
@@ -152,7 +188,7 @@ export default function NavBar() {
                         </>
                     }
 
-                    <p></p>
+                    <p className="navbar-divider"></p>
                     {!loginState.isLoggedIn &&
                         <>
                             <div
@@ -209,7 +245,12 @@ export default function NavBar() {
                                         <div className="profile-modal-mystuff-suncont">
                                             <span className="profile-blank-span"></span>
                                             <span>Online Status</span>
-                                            <Switch size="small" className="profile-modal-switch" onChange={() => dispatch(handleOnlineStatusClick())} />
+                                            <Switch
+                                                defaultChecked={loginState.onlineStatus ? true : undefined}
+                                                size="small"
+                                                className="profile-modal-switch"
+                                                onChange={() => dispatch(handleOnlineStatusClick())}
+                                            />
                                         </div>
 
                                         <div
@@ -254,14 +295,25 @@ export default function NavBar() {
                                         <div className="profile-modal-mystuff-suncont">
                                             <span className="profile-blank-span"></span>
                                             <span>Dark Mode</span>
-                                            <Switch defaultChecked size="small" className="profile-modal-switch" />
+                                            <Switch
+                                                defaultChecked={loginState.isLightModeActive ? undefined : true}
+                                                size="small"
+                                                className="profile-modal-switch"
+                                                onChange={() => dispatch(handleLightModeActive())}
+                                            />
                                         </div>
                                     </div>
 
                                     <hr className="profile-modal-line-break" />
 
                                     <div className="profile-modal-mystuff-container">
-                                        <div className="profile-modal-mystuff-suncont">
+                                        <div 
+                                        className="profile-modal-mystuff-suncont"
+                                        onClick={() => {
+                                            dispatch(handleCreateCommunityClick())
+                                            dispatch(handleProfileModal())
+                                        }}
+                                        >
                                             <CgCommunity className="profile-excess-logo" />
                                             <span>Create a Community</span>
                                         </div>
@@ -330,7 +382,7 @@ export default function NavBar() {
                                             className="profile-modal-mystuff-suncont"
                                             onClick={handleLogout}
                                         >
-                                            <TbLogout />
+                                            <TbLogout className="profile-excess-logo" />
                                             <span>Log Out</span>
                                         </div>
 

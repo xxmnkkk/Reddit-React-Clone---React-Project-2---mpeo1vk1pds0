@@ -4,9 +4,12 @@ import "../NavBar/Styles/createCommunity.scss"
 import { useLocation } from 'react-router-dom'
 import axios from 'axios';
 import { RiRobot2Fill } from "react-icons/ri";
+import { useSelector } from 'react-redux';
 
 
 export default function CreatePost() {
+    const loginState = useSelector((state) => state.loginState)
+
     const [successActive, setSuccessActive] = useState(false)
     const location = useLocation();
     const titleRef = useRef();
@@ -42,10 +45,10 @@ export default function CreatePost() {
             });
     }
 
-    console.log(location.pathname);
+    // console.log(location.pathname);
     return (
         <>
-            <div className='create-post-main-container'>
+            <div className={`create-post-main-container ${loginState.isLightModeActive && "create-post-main-container-light"}`}>
                 <div className='createpost-information-taker-container'>
                     <div className='create-community-modal-header'>
                         <p>Create a Post</p>

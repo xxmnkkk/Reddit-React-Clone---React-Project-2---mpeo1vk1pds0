@@ -36,10 +36,11 @@ import { FaFileContract } from "react-icons/fa";
 
 export default function HomePageSideNavBar() {
     const homePageState = useSelector((state) => state.homePageState);
+    const loginState = useSelector((state) => state.loginState)
     const dispatch = useDispatch();
 
     return (
-        <div className="homepage-side-navbar-container">
+        <div className={`homepage-side-navbar-container ${loginState.isLightModeActive && "homepage-side-navbar-container-light"}`}>
             <div className="homepage-feed-selector-container">
                 <div
                     className={`homepage-feed-selector ${homePageState.selectedFeed === "home" && "homepage-feed-selector-active"}`}
@@ -72,32 +73,32 @@ export default function HomePageSideNavBar() {
                 {homePageState.isTopicsActive &&
                     <>
                         <div className='homepage-excess-text'>
-                            <FaPlaystation />
+                            <FaPlaystation className='sidenav-icon'/>
                             <span>Gaming</span>
                         </div>
 
                         <div className='homepage-excess-text'>
-                            <MdOutlineSportsBaseball />
+                            <MdOutlineSportsBaseball className='sidenav-icon'/>
                             <span>Sports</span>
                         </div>
 
                         <div className='homepage-excess-text'>
-                            <FcStatistics />
+                            <FcStatistics className='sidenav-icon'/>
                             <span>Business</span>
                         </div>
 
                         <div className='homepage-excess-text'>
-                            <FaBitcoin />
+                            <FaBitcoin className='sidenav-icon'/>
                             <span>Crypto</span>
                         </div>
 
                         <div className='homepage-excess-text'>
-                            <PiTelevision />
+                            <PiTelevision className='sidenav-icon'/>
                             <span>Television</span>
                         </div>
 
                         <div className='homepage-excess-text'>
-                            <IoStarHalfSharp />
+                            <IoStarHalfSharp className='sidenav-icon'/>
                             <span>Celebrity</span>
                         </div>
                     </>
@@ -118,62 +119,62 @@ export default function HomePageSideNavBar() {
                 {homePageState.isResourcesActive &&
                     <>
                         <div className='homepage-excess-text'>
-                            <PiRobotThin />
+                            <PiRobotThin className='sidenav-icon'/>
                             <span>About Reddit</span>
                         </div>
 
                         <div className='homepage-excess-text'>
-                            <CiBullhorn />
+                            <CiBullhorn className='sidenav-icon'/>
                             <span>Advertise</span>
                         </div>
 
                         <div className='homepage-excess-text'>
-                            <MdOutlineHelpOutline />
+                            <MdOutlineHelpOutline className='sidenav-icon'/>
                             <span>Help</span>
                         </div>
 
                         <div className='homepage-excess-text'>
-                            <BsBook />
+                            <BsBook className='sidenav-icon'/>
                             <span>Blog</span>
                         </div>
 
                         <div className='homepage-excess-text'>
-                            <AiOutlineTool />
+                            <AiOutlineTool className='sidenav-icon'/>
                             <span>Careers</span>
                         </div>
 
                         <div className='homepage-excess-text'>
-                            <LuMic2 />
+                            <LuMic2 className='sidenav-icon'/>
                             <span>Press</span>
                         </div>
 
                         <div className='homepage-excess-text'>
-                            <CgCommunity />
+                            <CgCommunity className='sidenav-icon'/>
                             <span>Communities</span>
                         </div>
 
                         <div className='homepage-excess-text'>
-                            <IoHourglassOutline />
+                            <IoHourglassOutline className='sidenav-icon'/>
                             <span>Best of Reddit</span>
                         </div>
 
                         <div className='homepage-excess-text'>
-                            <MdOutlineTopic />
+                            <MdOutlineTopic className='sidenav-icon'/>
                             <span>Topics</span>
                         </div>
 
                         <div className='homepage-excess-text'>
-                            <MdContentPaste />
+                            <MdContentPaste className='sidenav-icon'/>
                             <span>Content Policy</span>
                         </div>
 
                         <div className='homepage-excess-text'>
-                            <FaBalanceScale />
+                            <FaBalanceScale className='sidenav-icon'/>
                             <span>Privacy Policy</span>
                         </div>
 
                         <div className='homepage-excess-text'>
-                            <FaFileContract />
+                            <FaFileContract className='sidenav-icon'/>
                             <span>User Agreement</span>
                         </div>
                     </>
