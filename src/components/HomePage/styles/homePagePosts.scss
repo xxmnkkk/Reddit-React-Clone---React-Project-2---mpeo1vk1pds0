@@ -224,17 +224,18 @@
 .homepage-post-popular-slider{
     position: relative;
     margin: 10px 0;
-    height: 180px;
+    height: 200px;
     width: 145%;
     // width: 400px;
     display: flex;
+    align-items: center;
     gap: 20px;
     overflow-x: auto;
 }
 
 .post-slider-card-container{
     width: 290px;
-    min-height: 190px;
+    height: inherit;
     border-radius: 15px;
     position: relative;
 
@@ -321,6 +322,10 @@
 
     >.homepage-post-popular-slider{
         background-color: inherit;
+
+        >.post-slider-card-container{
+            background-color: inherit;
+        }
     }
 
     >hr{
