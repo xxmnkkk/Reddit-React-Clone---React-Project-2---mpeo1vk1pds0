@@ -40,6 +40,7 @@ export default function HomePageSideNavBar() {
     const dispatch = useDispatch();
 
     return (
+        // Basic code for homepage side navbar which provides the functionality for navigating between home page and popular page.
         <div className={`homepage-side-navbar-container ${loginState.isLightModeActive && "homepage-side-navbar-container-light"}`}>
             <div className="homepage-feed-selector-container">
                 <div

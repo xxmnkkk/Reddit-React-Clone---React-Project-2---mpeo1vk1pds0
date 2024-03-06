@@ -13,12 +13,15 @@ export default function Menu() {
   const loginState = useSelector((state) => state.loginState)
   const dispatch = useDispatch();
 
+  // This function basically sets the menu false and login modal to true 
   const handleMenuButtonClick = () => {
     dispatch(handleIsMenuActive())
     dispatch(handleLoginButtonClick())
   }
 
   return (
+    // Basic code for the ui of menu 
+    
     <div className={`menu-container ${loginState.isLightModeActive && "menu-container-light"}`}>
       <div
         className='menu-sub-container'

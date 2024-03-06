@@ -1,4 +1,4 @@
-import React, { useRef , useState} from 'react';
+import React, { useRef, useState } from 'react';
 import "../Styles/SigninAndSignupModal.scss";
 import { IoCloseOutline } from "react-icons/io5";
 import { useSelector, useDispatch } from 'react-redux'
@@ -15,12 +15,15 @@ import axios from 'axios';
 export default function SigninAndSignupModal() {
   const loginState = useSelector((state) => state.loginState);
   const dispatch = useDispatch()
-  const [error , setError] = useState("");
+
+  // State for setting the error message if any occurs during logging in or signing up
+  const [error, setError] = useState("");
 
   const nameRef = useRef("");
   const emailRef = useRef("");
   const passwordRef = useRef("");
 
+  // async function for handling logging in
   const handleLogin = async () => {
     const config = {
       headers: {
@@ -53,6 +56,7 @@ export default function SigninAndSignupModal() {
     }
   };
 
+  // async function for handling signing up
   const handleSignup = async () => {
     const config = {
       headers: {
@@ -70,24 +74,33 @@ export default function SigninAndSignupModal() {
 
     try {
       const response = await axios.post("https://academics.newtonschool.co/api/v1/user/signup", body, config);
-      console.log(response.data);
+      console.log("response: ", response);
 
-      dispatch(handleIsLoggedIn())
-      dispatch(handleLoginModalCloseClick())
-
-      const signUpDetails = {
-        name: response.data.data.name,
-        email: response.data.data.email
+      if(response && passwordRef.current.value !== ""){
+        dispatch(handleIsLoggedIn())
+        dispatch(handleLoginModalCloseClick())
+  
+        const signUpDetails = {
+          name: nameRef.current.value,
+          email: emailRef.current.value
+        }
+  
+        localStorage.setItem(`User_${response.data.data.email}`, JSON.stringify(signUpDetails))
+        sessionStorage.setItem("LoggedInUser", JSON.stringify(signUpDetails))
+        sessionStorage.setItem("token", JSON.stringify(response.data.token))
       }
-
-      localStorage.setItem(`User_${response.data.data.email}`, JSON.stringify(signUpDetails))
-      sessionStorage.setItem("token", JSON.stringify(response.data.token))
+      else{
+        console.log("Please set password");
+        setError("Please set the password")
+      }
+      
     } catch (error) {
       setError(error.response.data.message)
     }
   };
 
   return (
+    // Code for loggin/signup modal which switches up based on the active form state
     <div className='signin-and-signup-modal-layover'>
       {loginState.isActiveForm === "login" ?
         <div className={`signin-and-signup-modal-container ${loginState.isLightModeActive && "signin-and-signup-modal-container-light"}`}>
@@ -169,7 +182,7 @@ export default function SigninAndSignupModal() {
             Sign Up
           </div>
 
-          <div>{error}</div>
+          <span>{error}</span>
         </div>
       }
     </div>

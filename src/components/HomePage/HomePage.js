@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux"
 
 
 export default function HomePage() {
+    // Here im managing my homepage layout, basicilly applying css to alight it equally and importing the required component
     const homepageState = useSelector((state) => state.homePageState)
     const loginState = useSelector((state) => state.loginState)
     return (

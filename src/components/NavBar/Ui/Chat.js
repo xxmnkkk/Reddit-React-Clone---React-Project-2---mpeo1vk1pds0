@@ -12,6 +12,8 @@ export default function chat() {
   const dispatch = useDispatch();
 
   return (
+
+    // This is the code for chat message container, nothinng special here just a display which shows the desired message and some icons.
     <div className={`chat-modal-container ${loginState.isLightModeActive && "chat-modal-container-light"}`}>
       <div className="chat-modal-bar">
         <span>Chats</span>

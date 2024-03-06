@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import "../styles/subredditPage.scss"
 import axios from 'axios';
 
@@ -14,6 +14,7 @@ import { GoComment } from "react-icons/go";
 import { FiShare } from "react-icons/fi";
 import { LuCakeSlice } from "react-icons/lu";
 
+// Just an array of objects with color information to set in respective section
 const backgroundSkillsColor = [
   {
     backgroundColor: "orange"
@@ -53,7 +54,7 @@ export default function SubredditPage() {
   const homepageState = useSelector((state) => state.homepageState)
   const dispatch = useDispatch();
 
-  const [joined , setJoined] = useState(false)
+  const [joined, setJoined] = useState(false)
 
   const channelId = searchedUserState.subredditUserId;
   const token = sessionStorage.getItem("token")
@@ -69,18 +70,22 @@ export default function SubredditPage() {
       }
     }
 
+    // Calling the api for getting the posts data for respective subreddit page
     axios.get(`https://academics.newtonschool.co/api/v1/reddit/channel/${channelId}/posts`, config)
       .then((response) => {
         dispatch(setSubredditData(response.data.data));
+        console.log("Popular community Data: ", response);
       })
       .then((error) => {
         console.log(error);
       })
 
+    // Calling the api for getting the subreddit pages details 
     axios.get(`https://academics.newtonschool.co/api/v1/reddit/channel/${channelId}`, config)
       .then((response) => {
         // console.log(response.data.data);
         dispatch(setSubredditUserData(response.data.data));
+        console.log("Popular community user Data: ", response);
       })
       .then((error) => {
         console.log(error);
@@ -90,8 +95,8 @@ export default function SubredditPage() {
   const subredditData = searchedUserState.subredditData;
   const subredditUserData = searchedUserState.subredditUserData
 
-  console.log("Popular community Data: ", subredditData);
-  console.log("Popular community user Data: ", subredditUserData);
+  // console.log("Popular community Data: ", subredditData);
+  // console.log("Popular community user Data: ", subredditUserData);
 
   return (
     <div className='subreddit-main-container'>
@@ -108,9 +113,9 @@ export default function SubredditPage() {
             <p>u/{subredditUserData?.owner?.name}</p>
           </div>
 
-          <div 
-          className='subreddit-join-button'
-          onClick={() => setJoined(!joined)}
+          <div
+            className='subreddit-join-button'
+            onClick={() => setJoined(!joined)}
           >{joined ? "Joined" : "Join"}</div>
         </div>
       </div>
@@ -121,15 +126,15 @@ export default function SubredditPage() {
             <>
               <div key={index} className='subreddit-post'>
                 <span>Posted by u/{subredditUserData?.owner?.name}</span>
-                <h2>{data.title}</h2>
-                <p>{data.content}</p>
+                <h2>{data?.title}</h2>
+                <p>{data?.content}</p>
 
                 <div className='post-interaction-container'>
                   <div className='post-interaction-subcont'>
                     <TiArrowUpOutline
                       className='post-interaction-icon subreddit-useless-icon'
                     />
-                    {data.likeCount}
+                    {data?.likeCount}
                     <TiArrowDownOutline
                       className='post-interaction-icon subreddit-useless-icon'
                     />
@@ -138,7 +143,7 @@ export default function SubredditPage() {
                     className='post-interaction-subcont post-curse subreddit-useless-icon'
                   >
                     <GoComment className='post-interaction-icon-1' />
-                    {data.commentCount}
+                    {data?.commentCount}
                   </div>
                   <div className='post-interaction-subcont post-curse subreddit-useless-icon'>
                     <FiShare className='post-interaction-icon-1 ' />
@@ -280,42 +285,6 @@ export default function SubredditPage() {
               </div>
             </div>
           }
-
-          {/* <div className='subreddit-owner-details'>
-            <span>Support Us</span>
-            <div className='owner-detail-line'>
-              <span>Acc Number: </span>
-              <p>{subredditUserData?.owner?.paymentDetails[0]?.cardNumber || "N/A"}</p>
-            </div>
-            <div className='owner-detail-line'>
-              <span>IFSC Code: </span>
-              <p>{subredditUserData?.owner?.paymentDetails[0]?.cvv || "N/A"}</p>
-            </div>
-          </div>
-
-          <div className='subreddit-owner-details'>
-            <span>Experience Details</span>
-            <div className='owner-detail-line'>
-              <span>Company: </span>
-              <p>{subredditUserData?.owner?.workExperience[0]?.companyName || "N/A"}</p>
-            </div>
-            <div className='owner-detail-line'>
-              <span>Description: </span>
-              <p>{subredditUserData?.owner?.workExperience[0]?.description || "N/A"}</p>
-            </div>
-            <div className='owner-detail-line'>
-              <span>Designation: </span>
-              <p>{subredditUserData?.owner?.workExperience[0]?.designation || "N/A"}</p>
-            </div>
-            <div className='owner-detail-line'>
-              <span>Location: </span>
-              <p>{subredditUserData?.owner?.workExperience[0]?.location || "N/A"}</p>
-            </div>
-            <div className='owner-detail-line'>
-              <span>End date: </span>
-              <p>{subredditUserData?.owner?.workExperience[0]?.startDate?.slice(0 , 10) || "N/A"}</p>
-            </div>
-          </div> */}
 
           <div className='subreddit-owner-details'>
             <img src='https://styles.redditmedia.com/t5_3d4x4/styles/image_widget_5r1kkbeoudx91.jpg?format=pjpg&s=34cbbfb7a26a83189a7facd9c5ab5fae68573ce8' />

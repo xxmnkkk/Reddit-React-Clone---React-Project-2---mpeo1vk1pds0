@@ -10,9 +10,12 @@ import CreatePost from "../Subreddit/CreatePost.js";
 import SubredditPage from "../HomePage/Ui/SubredditPage.js";
 
 function App() {
+  // This is the App component, this is where all the magic starts to happen
+
   const loginState = useSelector((state) => state.loginState)
   const dispatch = useDispatch()
 
+  // Getting the current location and setting it so that i can navigate back to home-page/popular-page 
   const currentLocation = useLocation();
   console.log("Current Location: ", currentLocation.pathname);
 
@@ -20,6 +23,7 @@ function App() {
     dispatch(setCurrentLocation(currentLocation.pathname))
   }, [currentLocation.pathname])
 
+  // Setting if the user is logged in. session storage method is adopted so that when i reload the page the user does not log out.
   useEffect(() => {
     const userLoggedIn = sessionStorage.getItem("token")
     if(userLoggedIn){

@@ -18,6 +18,7 @@ export default function search() {
     const searchRef = useRef("");
     const navigate = useNavigate();
 
+    // Here im handling a key down event so that when i click enter, handlesearch function gets called
     useEffect(() => {
         const handleKeyDown = (event) => {
             if (event.key === 'Enter') {
@@ -29,6 +30,7 @@ export default function search() {
 
     }, []);
 
+    // This function basically calls the api for what ever value user has typed in the search bar and setting it inside of the state
     const handleSearch = () => {
         const config = {
             headers: {
@@ -36,8 +38,7 @@ export default function search() {
             }
         };
 
-        axios
-            .get(`https://academics.newtonschool.co/api/v1/reddit/post?search={"author.name" : "${searchRef.current.value}"}`, config)
+        axios.get(`https://academics.newtonschool.co/api/v1/reddit/post?search={"author.name" : "${searchRef.current.value}"}`, config)
             .then((response) => {
                 dispatch(handleSearchedData(response.data))
             })
@@ -48,6 +49,7 @@ export default function search() {
 
     // console.log("Searched data: ", searchState.searchedData);
 
+    // Here what ever search is popped up when clicked upon takes the user to the subreddit page which has all of the posts that the user has posted 
     const handleResultClick = (index) => {
         const selectedData = searchState.searchedData.data[index];
         const subredditName = selectedData.author.name;
@@ -56,6 +58,7 @@ export default function search() {
     };
 
     return (
+        // Code for the search result modal which gets activated when the user has clicked in search bar and pressed enter which gets handles by the useeffect hook above
         <div className={`navbar-search-container ${loginState.isLightModeActive && "navbar-search-container-light"}`}>
             <div className={`navbar-search ${loginState.isLightModeActive && "navbar-search-light"}`}>
                 <CiSearch className="navbar-search-icon" />
@@ -66,7 +69,7 @@ export default function search() {
                     placeholder="Search Reddit"
                     onFocus={() => dispatch(handleSearchModal())}
                 />
-                {loginState.showSearchModal && searchRef.current.value !== "" && <IoMdCloseCircle className="navbar-search-icon" onClick={() => dispatch(handleSearchModal())}/>}
+                {loginState.showSearchModal && searchRef.current.value !== "" && <IoMdCloseCircle className="navbar-search-icon" onClick={() => dispatch(handleSearchModal())} />}
             </div>
 
             {loginState.showSearchModal && searchRef.current.value !== "" &&

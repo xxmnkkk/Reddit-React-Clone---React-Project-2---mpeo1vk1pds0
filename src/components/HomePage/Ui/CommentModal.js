@@ -14,12 +14,16 @@ export default function CommentModal() {
   const loginState = useSelector((state) => state.loginState);
   const dispatch = useDispatch();
   const commentRef = useRef();
+
+  // Here creating a state so that i can store comments after modifying
   const [localComments, setLocalComments] = useState([]);
 
+  // Setting the value inside of the above useState hook
   useEffect(() => {
     setLocalComments(homePageState.comments);
   }, [homePageState.comments]);
 
+  // Getting all of the necessary details that are to be used here
   const loggedInUser = JSON.parse(sessionStorage.getItem("LoggedInUser"));
   // const user = loggedInUser.name;
   const user = loggedInUser ? loggedInUser.name : '';
@@ -29,10 +33,13 @@ export default function CommentModal() {
   const trimmedToken = token ? token.slice(1, -1) : null;
 
   const handleCommentPost = () => {
+    // Creating the new comment for the current user logged in
     const newComment = { author: user, content: commentRef.current.value, children: [] };
 
+    // Setting the comment inside of the use state 
     setLocalComments(prevComments => [...prevComments, newComment]);
 
+    // Calling the api to post the comment
     fetch(`https://academics.newtonschool.co/api/v1/reddit/comment/${postId}`, {
       method: 'POST',
       headers: {
@@ -55,6 +62,7 @@ export default function CommentModal() {
   }
 
   const handleDeleteComment = (commentId) => {
+    // Filtering out the comment from the state that is deleted 
     setLocalComments(prevComments => prevComments.filter(comment => comment._id !== commentId));
 
     fetch(`https://academics.newtonschool.co/api/v1/reddit/comment/${commentId}`, {
@@ -82,6 +90,7 @@ export default function CommentModal() {
         Comment as <span>{user}</span>
       </div>
 
+      {/* Basic ui for posting a comment */}
       <div className='post-comment-container'>
         <textarea typeof='text' placeholder='What are your thoughts?' ref={commentRef} />
         <div className='postcomment-icon-container'>
@@ -108,6 +117,7 @@ export default function CommentModal() {
         </div>
       </div>
 
+      {/* Mapping out all of the comments that is received from the api */}
       {localComments.map((data, index) => (
         <div className='otheruser-comment-container' key={index}>
           <div className='reddit-comment-author-name'>redditUser{data.author.slice(0, 6)}</div>

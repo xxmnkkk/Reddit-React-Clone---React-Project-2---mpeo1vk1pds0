@@ -12,6 +12,8 @@ export default function () {
     const dispatch = useDispatch()
 
     return (
+        // Basic code for the ui of notification modal and it is for display purpose
+
         <div className={`notification-modal ${loginState.isLightModeActive && "notification-modal-light"}`}>
             <div
                 className='notification-reddit-recap-container'

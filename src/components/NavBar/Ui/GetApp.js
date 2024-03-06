@@ -12,6 +12,7 @@ export default function GetApp() {
     const dispatch = useDispatch();
 
     return (
+        // Very basic code for the get app modal. nothing special here just a picture of a barcode which is suppose to take us to download page and some texts guiding the user.
         <div className='getapp-modal-layover'>
             <div className={`getapp-modal-container ${loginState.isLightModeActive && "getapp-modal-container-light"}`}>
                 <div className='getapp-bar'>
@@ -29,6 +30,8 @@ export default function GetApp() {
                     <h3>download the app now</h3>
                     <img src='https://www.redditstatic.com/shreddit/assets/shreddit-qr-code.svg' />
                     <p>Or check it out in the app stores</p>
+
+                    {/* Image icons for play store and appstore liks for reddit downloads which also takes the user to the correct page which ive managed using state */}
                     <div className='getapp-download-links'>
                         <img src='https://www.redditstatic.com/shreddit/assets/google-play.svg' onClick={() => dispatch(navigateToPlayStore())} />
                         <img src='https://www.redditstatic.com/shreddit/assets/app-store.svg' onClick={() => dispatch(navigateToAppStore())} />

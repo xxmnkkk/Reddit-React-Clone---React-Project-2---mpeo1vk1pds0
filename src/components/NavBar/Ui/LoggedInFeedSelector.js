@@ -24,6 +24,7 @@ export default function LoggedInFeedSelector() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // Defining an array of objects so that its easy for me to set what index ive selected basically what im trying to do here is that whatever is selected inside the dropdown gets reflected inside of the feed selector button
   const selectedOption = [
     {
       icon: <AiFillHome className={`feed-icon ${feedSelectorState.isFeedModalVisible ? "feed-modal-active-2" : ""}`} />,
@@ -45,6 +46,7 @@ export default function LoggedInFeedSelector() {
   const index = feedSelectorState.index;
   const selectedFeedOption = selectedOption[index];
 
+  // Here on click of an option inside the dropdown, index is being set and also what feed is selected so that the page also changes. so when ever the state changes like if i choose home then homepage will be displayed and if i choose popular than popular page will be displayed
   const handleFeedChange = (index, selectedFeed) => {
     dispatch(setIndex(index));
     dispatch(setSelectedFeed1(selectedFeed));
@@ -56,6 +58,7 @@ export default function LoggedInFeedSelector() {
     }
   };
 
+  // Causing a re-render whenever the state changes 
   useEffect(() => {
     if (feedSelectorState.selectedFeed === 'Home') {
       dispatch(setSelectedFeed('home'));
@@ -70,6 +73,8 @@ export default function LoggedInFeedSelector() {
   // }
 
   return (
+    // Basic code for the ui of feed selector dropdown 
+    
     <div className={`loggedin-feed-selector-container ${loginState.isLightModeActive && "loggedin-feed-selector-container-light"}`}>
       <div className={`auth-navbar-container ${feedSelectorState.isFeedModalVisible ? "feed-modal-active" : ""}`} onClick={() => dispatch(setFeedModal())}>
         <div>

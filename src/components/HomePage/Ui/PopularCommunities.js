@@ -14,6 +14,7 @@ export default function PopularCommunities() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    // Calling the api for getting the popular communities data nd storing it inside of the state
     useEffect(() => {
         const config = {
             headers: {
@@ -30,6 +31,7 @@ export default function PopularCommunities() {
             })
     }, [])
 
+    // If user is logged in then navigating them to the respective subreddit page 
     const handleSubredditNavigate = (userId) => {
         if(!loginState.isLoggedIn){
             dispatch(handleLoginButtonClick())
@@ -43,6 +45,7 @@ export default function PopularCommunities() {
     // console.log("Popular communities",homepageState.popularCommunitiesData);
 
     return (
+        // Basic code for implementing the popular communities(Subreddits) data 
         <div className={`popular-community-section popular-community-section-ipad ${homepageState.selectedFeed === "popular" && "popular-community-section-popularactive"} ${loginState.isLightModeActive && "popular-community-section-light"}`}>
             <div className={`popular-community-container ${homepageState.isShowMoreActive && "popular-community-container-expanded"}`}>
                 <h3>POPULAR COMMUNITIES</h3>
@@ -74,7 +77,3 @@ export default function PopularCommunities() {
         </div>
     )
 }
-
-
-
-// onClick={handleSubredditNavigate(data._id)}

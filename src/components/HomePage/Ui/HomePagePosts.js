@@ -21,6 +21,7 @@ import { FiShare } from "react-icons/fi";
 import { json } from 'react-router-dom'
 import CommentModal from './CommentModal'
 
+// An array of object with details of image and other necessary details thats going to show up when popular posts tab is selected.
 const postSliderData = [
     {
         image: "https://external-preview.redd.it/18-year-old-gta-vi-hacker-ordered-to-life-in-hospital-over-v0-j7Q_X-M3-s8RAwPGnN8u6ismKlYRguKK4DvjYuDiV1w.jpg?auto=webp&s=f893ecd7b299d7dfdc98c55bc325830abb400934",
@@ -58,8 +59,11 @@ export default function HomePagePosts() {
 
     const [sortedPosts, setSortedPosts] = useState([]);
     const [joined, setJoined] = useState(false);
+
+    // Storing all of the users im following here manually 
     const [joinedStatus, setJoinedStatus] = useState({});
 
+    // Calling the api for posts when weppage gets loaded up
     useEffect(() => {
         const config = {
             headers: {
@@ -76,6 +80,7 @@ export default function HomePagePosts() {
             })
     }, [dispatch]);
 
+    // Simple logic for sorting the post based on like count to show up when popular community tab is selected
     useEffect(() => {
         if (homepageState.homePagePostsData) {
             const sortedData = [...homepageState.homePagePostsData];
@@ -98,7 +103,9 @@ export default function HomePagePosts() {
     const token = sessionStorage.getItem("token")
     const trimmedToken = token ? token.slice(1, -1) : null;
 
+    // Fucntion for hanndling upvote click
     const handleUpvoteClick = async (postId) => {
+        // Suppose to be allowed only when the user is logged in so that is being checked here 
         if (loginState.isLoggedIn) {
             try {
                 const response = await fetch(`https://academics.newtonschool.co/api/v1/reddit/like/${postId}`, {
@@ -109,6 +116,7 @@ export default function HomePagePosts() {
                     }
                 });
 
+                // Here checking if response received and basically updating the like count for whatever post i have liked. So basically im matching the id of the post and updating it so that it reflects on the screen instead of calling the whole api again
                 if (response.ok) {
                     const updatedPosts = homepageState.homePagePostsData.map(post => {
                         if (post._id === postId) {
@@ -131,7 +139,9 @@ export default function HomePagePosts() {
         }
     };
 
+    // Function for handling downvote click
     const handleDownvoteClick = async (postId) => {
+        // Suppose to be allowed only when the user is logged in so that is being checked here 
         if (loginState.isLoggedIn) {
             try {
                 const response = await fetch(`https://academics.newtonschool.co/api/v1/reddit/like/${postId}`, {
@@ -142,6 +152,7 @@ export default function HomePagePosts() {
                     }
                 });
 
+                // Same logic as above just additional thinking of whether a post has 0 likes, then just skipping it 
                 if (response.ok) {
                     const updatedPosts = homepageState.homePagePostsData.map(post => {
                         if (post._id === postId) {
@@ -164,6 +175,7 @@ export default function HomePagePosts() {
         }
     };
 
+    // Function for handling comment click which sets the comment data inside of the state
     const handleCommentClick = async (postId, index) => {
         if (loginState.isLoggedIn) {
             dispatch(setActivePostIndex(index));
@@ -171,8 +183,10 @@ export default function HomePagePosts() {
 
             if (homepageState.activePostIndex === index) {
                 try {
+                    // If any data inside the comment state im setting it to empty array
                     dispatch(setComments([]));
 
+                    // Calling the api and setting the data inside of the state
                     const response = await fetch(`https://academics.newtonschool.co/api/v1/reddit/post/${postId}/comments`, {
                         method: 'GET',
                         headers: {
@@ -197,6 +211,7 @@ export default function HomePagePosts() {
 
     return (
         <div className={`homepage-posts-section ${loginState.isLightModeActive && "homepage-posts-section-light"}`}>
+            {/* If popular feed is selected, then im displaying the slider. Just mapping out the object mentioned outside of the component above*/}
             {homepageState.selectedFeed === "popular" &&
                 <div className='homepage-post-popular-slider'>
                     {postSliderData &&
@@ -212,6 +227,7 @@ export default function HomePagePosts() {
             }
             <hr />
 
+            {/* If home page, then the following code gets executed */}
             {homepageState.homePagePostsData && homepageState.selectedFeed === 'home' &&
                 homepageState.homePagePostsData.map((data, index) => (
                     <React.Fragment key={data._id}>
@@ -224,9 +240,9 @@ export default function HomePagePosts() {
                                 </div>
                                 <div className='post-join-section'>
                                     <span
+                                        // Here just toggling the join/joined functionality on users post 
                                         onClick={() => {
                                             dispatch(setActivePostIndex(index))
-                                            // setJoined(!joined)
 
                                             setJoinedStatus(prevStatus => {
                                                 const newStatus = { ...prevStatus };
@@ -292,6 +308,7 @@ export default function HomePagePosts() {
                 ))
             }
 
+            {/* If home page, then the following code gets executed */}
             {sortedPosts && homepageState.selectedFeed === 'popular' &&
                 sortedPosts.map((data, index) => (
                     <React.Fragment key={data._id}>
@@ -306,9 +323,9 @@ export default function HomePagePosts() {
                                 <div className='post-join-section'>
                                     {/* <span>Join</span> */}
                                     <span
+                                        // Here just toggling the join/joined functionality on users post 
                                         onClick={() => {
                                             dispatch(setActivePostIndex(index))
-                                            // setJoined(!joined)
 
                                             setJoinedStatus(prevStatus => {
                                                 const newStatus = { ...prevStatus };

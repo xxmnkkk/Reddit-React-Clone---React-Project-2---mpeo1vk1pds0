@@ -74,9 +74,13 @@ export default function NavBar() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    // Getting the logged in users name so that i can display it inside user profile tab.
     const loggedInUser = JSON.parse(sessionStorage.getItem("LoggedInUser"));
-    const token = sessionStorage.getItem("token")
 
+    // const token = sessionStorage.getItem("token")
+
+
+    // Here im handling logout click. So basically im closing the profile modal from which the user is able to log out and along with that im checking if message/feedSelectorModal is active, if it is im setting it to false. Also im removing the token and logged in users detail from the session storage.
     const handleLogout = () => {
         dispatch(handleLogOut())
         dispatch(handleProfileModal())
@@ -94,10 +98,12 @@ export default function NavBar() {
     }
 
     return (
-
         <>
+            {/* This is the code for my Navigation bar */}
             <div className={`navbar-container ${loginState.isLightModeActive && "navbar-container-light"}`}>
                 <div className='navbar-logo-container'>
+
+                    {/* Here im checking if the user is logged in and if he is not im going to display the required divs which should only be visible when the user is logged in */}
                     {!loginState.isLoggedIn &&
                         <div className={`ipad-menu-icon-section ${loginState.isLightModeActive && "ipad-menu-icon-section-light"}`}>
                             <div
@@ -125,12 +131,15 @@ export default function NavBar() {
                     <span>reddit</span>
                 </div>
 
+                {/* Here im checking if the user is logged in and if he is then im displaying the logged in feed selectior. this is basically a side nav bar but just for the case when the user is logged in */}
                 {loginState.isLoggedIn &&
                     <LoggedInFeedSelector />
                 }
 
+                {/* Imorting the search component */}
                 <Search />
 
+                {/* Here im displaying all of the icons like popular, reddit recap, message, notification, create post, advertise and the user profile icons*/}
                 <div className="navbar-signin-container">
                     {loginState.isLoggedIn &&
                         <div
@@ -214,6 +223,7 @@ export default function NavBar() {
                         </>
                     }
 
+                    {/* This is the code for the user profile container. this basically shows a default picture and name and a dropdown icon */}
                     {loginState.isLoggedIn &&
                         <div className={`loggedin-user-profile-container ${loginState.isProfileModalVisible && "loggedin-profile-modal-active"}`}>
                             <div
@@ -225,7 +235,7 @@ export default function NavBar() {
                                     {loginState.onlineStatus && <div className="user-active-green-dot"></div>}
                                 </div>
                                 <div>
-                                    <p>{loggedInUser.name}</p>
+                                    <p>{loggedInUser?.name}</p>
                                     <div>
                                         <GiFlowerEmblem className="karma-flower-icon" />
                                         1 karma
@@ -234,6 +244,7 @@ export default function NavBar() {
                                 <RiArrowDropDownLine className="loggedin-user-dowpdown" />
                             </div>
 
+                            {/* This code is for when the user profile dropdown is clicked. When it is clicked a lot of list is shown some of which is going to redirect me to another page and some of it is going to load up components */}
                             {loginState.isProfileModalVisible &&
                                 <div className="profile-modal">
                                     <div className="profile-modal-mystuff-container">
@@ -394,7 +405,8 @@ export default function NavBar() {
                     }
                 </div>
             </div>
-
+            
+            {/* Importing components based on state change  */}
             {loginState.isLoginModalVisible && <SigninAndSignupModal />}
             {loginState.isMessagesActive && <Chat />}
             {loginState.isGetAppActive && <GetApp />}
