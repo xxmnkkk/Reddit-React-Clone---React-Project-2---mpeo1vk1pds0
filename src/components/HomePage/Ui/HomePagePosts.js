@@ -95,10 +95,10 @@ export default function HomePagePosts() {
         dispatch(setIsPostMenuActive())
     }
 
-    // console.log("index", homepageState.activePostIndex);
-    // console.log("sorted posts: ", sortedPosts);
-    // console.log("selected feed: ", homepageState.selectedFeed);
-    // console.log("Post data: ", homepageState.homePagePostsData);
+    console.log("index", homepageState.activePostIndex);
+    console.log("sorted posts: ", sortedPosts);
+    console.log("selected feed: ", homepageState.selectedFeed);
+    console.log("Post data: ", homepageState.homePagePostsData);
 
     const token = sessionStorage.getItem("token")
     const trimmedToken = token ? token.slice(1, -1) : null;
