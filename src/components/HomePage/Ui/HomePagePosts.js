@@ -11,7 +11,7 @@ import {
     setComments
 } from '../../../redux/reducers/homePageSlice'
 
-import { handleLoginButtonClick } from "../../../redux/reducers/loginSlice"
+import { handleLoginButtonClick , handleCreateCommunityClick} from "../../../redux/reducers/loginSlice"
 
 import { CiMenuKebab } from "react-icons/ci";
 import { CiFlag1 } from "react-icons/ci";

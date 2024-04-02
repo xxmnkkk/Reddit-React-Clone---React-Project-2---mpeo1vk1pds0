@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { handleCreateCommunityClick } from "../../../redux/reducers/loginSlice"
-
+import {setCommunityCreated} from "../../../redux/reducers/homePageSlice"
 import { IoCloseOutline } from "react-icons/io5";
 import { RiRobot2Fill } from "react-icons/ri";
 
@@ -41,6 +41,8 @@ export default function CreateCommunity() {
             .then(response => {
                 console.log(response.data);
                 setSuccessActive(true);
+                dispatch(setCommunityCreated())
+
                 setTimeout(() => {
                     setSuccessActive(false)
                     dispatch(handleCreateCommunityClick())
@@ -133,65 +135,3 @@ export default function CreateCommunity() {
 
 
 
-
-// const config = {
-//     headers: {
-//         'Authorization': `Bearer ${trimmedToken}`,
-//         'projectID': 'f104bi07c490',
-//         'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify({
-//         title: titleRef.current.value,
-//         description: descriptionRef.current.value,
-//         images: imageUrlRef.current.value
-//     })
-// }
-// axios.post("https://academics.newtonschool.co/api/v1/reddit/channel/", config)
-//     .then(response => {
-//         console.log(response.data);
-//         setSuccessActive(true);
-//         setTimeout(() => {
-//             setSuccessActive(false)
-//             dispatch(handleCreateCommunityClick())
-//         }, 5000)
-//     })
-//     .catch(error => {
-//         console.error('Error:', error);
-//     });
-
-
-// console.log("token", trimmedToken);
-// console.log("title", titleRef.current.value);
-// console.log("description", descriptionRef.current.value);
-// console.log("images", imageUrlRef.current.value);
-
-
-
-
-// fetch('https://academics.newtonschool.co/api/v1/reddit/channel',{
-//     method: 'POST',
-//     headers: {
-//         'Authorization': `Bearer ${trimmedToken}`,
-//         'projectID': 'f104bi07c490',
-//         'Content-Type': 'multipart/form-data'
-//     },
-//     body: formData
-// })
-//     .then(response => {
-//         if (!response.ok) {
-//             // throw new Error(`HTTP error! Status: ${response.status}`);
-//             console.log(response)
-//         }
-//         return response.json();
-//     })
-//     .then(data => {
-//         console.log('Success:', data);
-//         setSuccessActive(true);
-//         setTimeout(() => {
-//             setSuccessActive(false)
-//             dispatch(handleCreateCommunityClick())
-//         }, 5000)
-//     })
-//     .catch(error => {
-//         console.log('Error:', error);
-//     });

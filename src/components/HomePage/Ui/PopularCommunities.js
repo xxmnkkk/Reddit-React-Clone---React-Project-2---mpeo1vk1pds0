@@ -29,7 +29,7 @@ export default function PopularCommunities() {
             .catch((error) => {
                 console.log(error);
             })
-    }, [])
+    }, [homepageState.communityCreated])
 
     // If user is logged in then navigating them to the respective subreddit page 
     const handleSubredditNavigate = (userId) => {

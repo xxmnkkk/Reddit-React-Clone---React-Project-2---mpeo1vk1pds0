@@ -15,7 +15,8 @@ const homePageState = createSlice({
         sortedPostData:[],
         isCommentActive: false,
         comments: [],
-        myComment: ""
+        myComment: "",
+        communityCreated: false
     },
     reducers: {
         setSelectedFeed: (state , action) => {
@@ -58,6 +59,9 @@ const homePageState = createSlice({
         },
         updateComments: (state , action) => {
             state.myComment = action.payload
+        },
+        setCommunityCreated: (state) => {
+            state.communityCreated = !state.communityCreated
         }
     }
 })
@@ -74,7 +78,8 @@ export const {
     setActivePostIndex,
     handleCommentModal,
     setComments,
-    updateComments
+    updateComments,
+    setCommunityCreated
 } = homePageState.actions
 
 export default homePageState.reducer
