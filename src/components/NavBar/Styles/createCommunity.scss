@@ -83,6 +83,7 @@
         border: 1px solid $breakLineColor;
         background-color: $searchBarColor;
         color: white;
+        padding: 4px 10px 4px 10px;
     }
 
     >input:focus{
@@ -96,6 +97,7 @@
         border: 1px solid $breakLineColor;
         background-color: $searchBarColor;
         color: white;
+        padding: 10px;
     }
 
     >textarea:focus{

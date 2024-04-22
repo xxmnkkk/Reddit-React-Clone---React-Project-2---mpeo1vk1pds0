@@ -5,15 +5,28 @@ import PopularCommunities from "./Ui/PopularCommunities"
 import HomePagePosts from "./Ui/HomePagePosts"
 
 import { useSelector, useDispatch } from "react-redux"
+import { setFeedModal } from "../../redux/reducers/feedSelectorSlice"
 
 
 export default function HomePage() {
     // Here im managing my homepage layout, basicilly applying css to alight it equally and importing the required component
     const homepageState = useSelector((state) => state.homePageState)
     const loginState = useSelector((state) => state.loginState)
+    const feedSelectorState = useSelector((state) => state.feedSelectorState)
+    const dispatch = useDispatch()
+
+    const checkHomeDropdown = () => {
+        if (feedSelectorState.isFeedModalVisible) {
+            dispatch(setFeedModal())
+        }
+    }
+
     return (
         <>
-            <div className={`homepage-main-container ${loginState.isLightModeActive && "homepage-main-container-light"}`}>
+            <div
+                className={`homepage-main-container ${loginState.isLightModeActive && "homepage-main-container-light"}`}
+                onClick={checkHomeDropdown}
+            >
                 {!loginState.isLoggedIn && <div className="home-sidenavbar">
                     <HomePageSideNavBar />
                 </div>}

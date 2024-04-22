@@ -229,6 +229,14 @@
     }
 }
 
+.subreddit-no-data{
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
+    text-align: center;
+    padding-top: 60px;
+}
+
 @media screen and (max-width: 768px){
     .subreddit-post-container{
         width: 60%;

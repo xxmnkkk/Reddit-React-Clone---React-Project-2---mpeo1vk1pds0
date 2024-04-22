@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { handleCreateCommunityClick } from "../../../redux/reducers/loginSlice"
-import {setCommunityCreated} from "../../../redux/reducers/homePageSlice"
+import { setCommunityCreated } from "../../../redux/reducers/homePageSlice"
 import { IoCloseOutline } from "react-icons/io5";
 import { RiRobot2Fill } from "react-icons/ri";
 
@@ -31,6 +31,14 @@ export default function CreateCommunity() {
         formData.append('name', titleRef.current.value);
         formData.append('description', descriptionRef.current.value);
         formData.append('images', imageUrlRef.current.value);
+
+        // if (imageUrlRef) {
+        //     const imageResponse = await fetch(imageUrlRef);
+        //     const blob = await imageResponse.blob();
+        //     // formData.append('images', blob, 'image.jpg');
+        //     formData.append('images', blob, 'image.jpg');
+
+        // }
 
         axios.post("https://academics.newtonschool.co/api/v1/reddit/channel", formData, {
             headers: {
@@ -78,9 +86,16 @@ export default function CreateCommunity() {
                             <textarea ref={descriptionRef} typeof='text' placeholder='post description' />
                         </div>
 
-                        <div className='create-community-input-containers'>
-                            <p>Image URL</p>
-                            <input ref={imageUrlRef} type='text' placeholder='URL' />
+                        <div className='create-community-input-containers' >
+                            <p>Upload Image</p>
+                            <input
+                                ref={imageUrlRef}
+                                type='file'
+                                style={{
+                                    backgroundColor: 'transparent',
+                                    border: 'none'
+                                }}
+                            />
                         </div>
                     </div>
 

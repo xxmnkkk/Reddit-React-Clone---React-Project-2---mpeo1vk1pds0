@@ -101,7 +101,7 @@ export default function NavBar() {
         <>
             {/* This is the code for my Navigation bar */}
             <div className={`navbar-container ${loginState.isLightModeActive && "navbar-container-light"}`}>
-                <div className='navbar-logo-container'>
+                <div className='navbar-logo-container' onClick={() => navigate('/')}>
 
                     {/* Here im checking if the user is logged in and if he is not im going to display the required divs which should only be visible when the user is logged in */}
                     {!loginState.isLoggedIn &&
@@ -273,7 +273,7 @@ export default function NavBar() {
                                             <p>New</p>
                                         </div>
 
-                                        <div className="profile-modal-mystuff-suncont">
+                                        <div className="profile-modal-mystuff-suncont" style={{cursor: "not-allowed"}}>
                                             <span className="profile-blank-span"></span>
                                             <span>Profile</span>
                                             <span></span>
@@ -288,7 +288,7 @@ export default function NavBar() {
                                             <span></span>
                                         </div>
 
-                                        <div className="profile-modal-mystuff-suncont">
+                                        <div className="profile-modal-mystuff-suncont" style={{cursor: "not-allowed"}}>
                                             <span className="profile-blank-span"></span>
                                             <span>User Settings</span>
                                             <span></span>

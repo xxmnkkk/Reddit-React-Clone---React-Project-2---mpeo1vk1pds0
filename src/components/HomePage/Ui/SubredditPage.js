@@ -95,7 +95,7 @@ export default function SubredditPage() {
   const subredditData = searchedUserState.subredditData;
   const subredditUserData = searchedUserState.subredditUserData
 
-  // console.log("Popular community Data: ", subredditData);
+  console.log("subredditData: ", subredditData);
   // console.log("Popular community user Data: ", subredditUserData);
 
   return (
@@ -156,6 +156,8 @@ export default function SubredditPage() {
 
             </>
           ))}
+
+          {subredditData.length === 0 && <div className='subreddit-no-data' >No posts found for this subreddit page</div>}
         </div>
 
         <div className='subreddit-details-container'>
@@ -286,7 +288,7 @@ export default function SubredditPage() {
             </div>
           }
 
-          <div className='subreddit-owner-details'>
+          {/* <div className='subreddit-owner-details'>
             <img src='https://styles.redditmedia.com/t5_3d4x4/styles/image_widget_5r1kkbeoudx91.jpg?format=pjpg&s=34cbbfb7a26a83189a7facd9c5ab5fae68573ce8' />
           </div>
 
@@ -316,7 +318,7 @@ export default function SubredditPage() {
 
           <div className='subreddit-owner-details'>
             <img src='https://styles.redditmedia.com/t5_3d4x4/styles/image_widget_4jrgtyhb9n2a1.jpg?format=pjpg&s=f21bfe81f071d070202ecd8d6fdbbd2feb31ffa7' />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

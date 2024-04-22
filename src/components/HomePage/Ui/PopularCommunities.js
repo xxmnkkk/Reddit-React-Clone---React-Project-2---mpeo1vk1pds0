@@ -25,6 +25,7 @@ export default function PopularCommunities() {
         axios.get("https://academics.newtonschool.co/api/v1/reddit/channel?limit=1000", config)
             .then((response) => {
                 dispatch(setPopularCommunnitiesData(response.data.data))
+                console.log("Popular community data: ", response.data.data);
             })
             .catch((error) => {
                 console.log(error);

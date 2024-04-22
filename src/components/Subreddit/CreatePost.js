@@ -16,14 +16,19 @@ export default function CreatePost() {
     const contentRef = useRef();
     const imageUrlRef = useRef();
 
-    const handleCreatePostClick = () => {
+    const handleCreatePostClick = async () => {
         const token = sessionStorage.getItem("token");
         const trimmedToken = token ? token.slice(1, -1) : null;
 
         const formData = new FormData();
         formData.append('title', titleRef.current.value);
         formData.append('content', contentRef.current.value);
-        formData.append('images', imageUrlRef.current.value);
+
+        if(imageUrlRef){
+            const imageResponse = await fetch(imageUrlRef);
+            const blob = await imageResponse.blob();
+            formData.append('images', blob, 'image.jpg');
+        }
 
         const config = {
             headers: {
@@ -67,8 +72,15 @@ export default function CreatePost() {
                         </div>
 
                         <div className='create-community-input-containers'>
-                            <p>Image URL</p>
-                            <input ref={imageUrlRef} type='text' placeholder='URL' />
+                            <p>Upload Image</p>
+                            <input
+                                ref={imageUrlRef}
+                                type='file'
+                                style={{
+                                    backgroundColor: 'transparent',
+                                    border: 'none'
+                                }}
+                            />
                         </div>
 
                         <div className='post-container'>

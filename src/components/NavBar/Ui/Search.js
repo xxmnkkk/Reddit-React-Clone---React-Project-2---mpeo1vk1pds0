@@ -31,7 +31,7 @@ export default function search() {
     }, []);
 
     // This function basically calls the api for what ever value user has typed in the search bar and setting it inside of the state
-    const handleSearch = () => {
+    const handleSearch = (e) => {
         const config = {
             headers: {
                 projectID: "f104bi07c490"
@@ -67,6 +67,7 @@ export default function search() {
                     type="text"
                     name="search-input"
                     placeholder="Search Reddit"
+                    onChange={(e) => handleSearch(e.target.value)}
                     onFocus={() => dispatch(handleSearchModal())}
                 />
                 {loginState.showSearchModal && searchRef.current.value !== "" && <IoMdCloseCircle className="navbar-search-icon" onClick={() => dispatch(handleSearchModal())} />}
