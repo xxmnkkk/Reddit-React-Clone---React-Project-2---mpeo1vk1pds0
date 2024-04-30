@@ -11,7 +11,7 @@ import {
     setComments
 } from '../../../redux/reducers/homePageSlice'
 
-import { handleLoginButtonClick , handleCreateCommunityClick} from "../../../redux/reducers/loginSlice"
+import { handleLoginButtonClick, handleCreateCommunityClick } from "../../../redux/reducers/loginSlice"
 
 import { CiMenuKebab } from "react-icons/ci";
 import { CiFlag1 } from "react-icons/ci";
@@ -272,6 +272,27 @@ export default function HomePagePosts() {
                             </div>
 
                             <div className='post-image-and-details-container'>
+                                {/* {data.images &&
+                                    <div style={{
+                                        height: "350px",
+                                        width: "100%",
+                                        overflow: "hidden",
+                                        borderRadius: "10px",
+                                        marginBottom: "10px"
+                                    }}>
+                                        <img src={data.images[0]} style={{
+                                            minWidth: "100%",
+                                            minHeight: "50%"
+                                        }} />
+                                    </div>
+                                } */}
+
+                                {data.images &&
+                                    <div className="image-container">
+                                        <img src={data.images[0]} alt="Uploaded image" />
+                                    </div>
+                                }
+
                                 <p>{data.content}</p>
                             </div>
 
@@ -355,6 +376,27 @@ export default function HomePagePosts() {
                             </div>
 
                             <div className='post-image-and-details-container'>
+                                {/* {data.images &&
+                                    <div style={{
+                                        height: "350px",
+                                        width: "100%",
+                                        overflow: "hidden",
+                                        borderRadius: "10px",
+                                        marginBottom: "10px"
+                                    }}>
+                                        <img src={data.images[0]} style={{
+                                            minWidth: "100%",
+                                            minHeight: "50%"
+                                        }} />
+                                    </div>
+                                } */}
+
+                                {data.images &&
+                                    <div className="image-container">
+                                        <img src={data.images[0]} alt="Uploaded image" />
+                                    </div>
+                                }
+
                                 <p>{data.content}</p>
                             </div>
 

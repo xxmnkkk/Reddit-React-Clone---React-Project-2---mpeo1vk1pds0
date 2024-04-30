@@ -40,6 +40,11 @@ export default function CreateCommunity() {
 
         // }
 
+        // if(imageUrlRef.current && imageUrlRef.current.files.length > 0){
+        //     const imageFile = imageUrlRef.current.files[0];
+        //     formData.append('images', imageFile, imageFile.name);
+        // }
+
         axios.post("https://academics.newtonschool.co/api/v1/reddit/channel", formData, {
             headers: {
                 'Authorization': `Bearer ${trimmedToken}`,

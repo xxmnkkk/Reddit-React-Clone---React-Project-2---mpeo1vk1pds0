@@ -66,9 +66,9 @@ import CreateCommunity from "./Ui/CreateCommunity.js";
 import { useNavigate } from "react-router-dom";
 import HomePageSideNavBar from "../HomePage/Ui/HomePageSideNavBar.js";
 
-
 export default function NavBar() {
     const loginState = useSelector((state) => state.loginState);
+    const homePageState = useSelector((state) => state.homePageState);
     const externalWebsiteState = useSelector((state) => state.externalWebsiteState);
     const feedSelectorState = useSelector((state) => state.feedSelectorState)
     const dispatch = useDispatch();
@@ -97,11 +97,17 @@ export default function NavBar() {
         sessionStorage.removeItem("LoggedInUser")
     }
 
+    const handleRedditClick = () => {
+        dispatch(setSelectedFeed("home"));
+        dispatch(setIndex(0));
+        navigate('/');
+    }
+
     return (
         <>
             {/* This is the code for my Navigation bar */}
             <div className={`navbar-container ${loginState.isLightModeActive && "navbar-container-light"}`}>
-                <div className='navbar-logo-container' onClick={() => navigate('/')}>
+                <div className='navbar-logo-container' onClick={handleRedditClick}>
 
                     {/* Here im checking if the user is logged in and if he is not im going to display the required divs which should only be visible when the user is logged in */}
                     {!loginState.isLoggedIn &&
@@ -145,11 +151,11 @@ export default function NavBar() {
                         <div
                             className="navbar-auth-logo-container"
                             onClick={() => {
-                                if(loginState.currentLocation !== "/"){
+                                if (loginState.currentLocation !== "/") {
                                     navigate("/")
                                     dispatch(setSelectedFeed("popular"));
                                     dispatch(setIndex(1));
-                                }else{
+                                } else {
                                     dispatch(setSelectedFeed("popular"));
                                     dispatch(setIndex(1));
                                 }
@@ -273,7 +279,7 @@ export default function NavBar() {
                                             <p>New</p>
                                         </div>
 
-                                        <div className="profile-modal-mystuff-suncont" style={{cursor: "not-allowed"}}>
+                                        <div className="profile-modal-mystuff-suncont" style={{ cursor: "not-allowed" }}>
                                             <span className="profile-blank-span"></span>
                                             <span>Profile</span>
                                             <span></span>
@@ -288,7 +294,7 @@ export default function NavBar() {
                                             <span></span>
                                         </div>
 
-                                        <div className="profile-modal-mystuff-suncont" style={{cursor: "not-allowed"}}>
+                                        <div className="profile-modal-mystuff-suncont" style={{ cursor: "not-allowed" }}>
                                             <span className="profile-blank-span"></span>
                                             <span>User Settings</span>
                                             <span></span>
@@ -318,12 +324,12 @@ export default function NavBar() {
                                     <hr className="profile-modal-line-break" />
 
                                     <div className="profile-modal-mystuff-container">
-                                        <div 
-                                        className="profile-modal-mystuff-suncont"
-                                        onClick={() => {
-                                            dispatch(handleCreateCommunityClick())
-                                            dispatch(handleProfileModal())
-                                        }}
+                                        <div
+                                            className="profile-modal-mystuff-suncont"
+                                            onClick={() => {
+                                                dispatch(handleCreateCommunityClick())
+                                                dispatch(handleProfileModal())
+                                            }}
                                         >
                                             <CgCommunity className="profile-excess-logo" />
                                             <span>Create a Community</span>
@@ -405,7 +411,7 @@ export default function NavBar() {
                     }
                 </div>
             </div>
-            
+
             {/* Importing components based on state change  */}
             {loginState.isLoginModalVisible && <SigninAndSignupModal />}
             {loginState.isMessagesActive && <Chat />}

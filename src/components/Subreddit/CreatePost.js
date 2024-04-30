@@ -24,11 +24,17 @@ export default function CreatePost() {
         formData.append('title', titleRef.current.value);
         formData.append('content', contentRef.current.value);
 
-        if(imageUrlRef){
-            const imageResponse = await fetch(imageUrlRef);
-            const blob = await imageResponse.blob();
-            formData.append('images', blob, 'image.jpg');
+        // if(imageUrlRef){
+        //     const imageResponse = await fetch(imageUrlRef);
+        //     const blob = await imageResponse.blob();
+        //     formData.append('images', blob, 'image.jpg');
+        // }
+
+        if(imageUrlRef.current && imageUrlRef.current.files.length > 0){
+            const imageFile = imageUrlRef.current.files[0];
+            formData.append('images', imageFile, imageFile.name);
         }
+        
 
         const config = {
             headers: {
